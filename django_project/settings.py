@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "debug_toolbar",
+    "safedelete",
     # Local
     "accounts",
     "pages",
@@ -97,7 +98,7 @@ DATABASES = {
         "HOST": config('DATABASE_HOST'), # "db",  # set in docker-compose.yml
         "PORT": config('DATABASE_PORT'), # 5432,  # default postgres port
         "TEST": {
-            "NAME": config('TEST_DATABASE_NAME'),
+            "NAME": config('TEST_DATABASE_NAME'),# Documentation Purposes and allowing for override
         }
     }
 }
