@@ -63,7 +63,6 @@ Layout
 */
 
 body {
-  background: url(./RiceTiledBgV1.png);
   margin-bottom: 60px; /* Margin bottom by footer height */
 }
 
@@ -367,7 +366,6 @@ Main header
 
 #logo {
 	/* background-color: white; */
-	/* background-image: url(./RiceLogo2.png); */
 	width: 120px;
 	height: 100px;
 }
