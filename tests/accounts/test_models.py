@@ -4,6 +4,8 @@ from .factories import CustomUserFactory
 
 from accounts.models import CustomUser
 
+from django.db import IntegrityError, transaction
+
 class UserModelsTestCase(TestCase):
     def setUp(self):
         # Setup run before every test method.
@@ -26,23 +28,27 @@ class UserModelsTestCase(TestCase):
         # soft delete the first user
         test_users[0].delete()
         print(f'Soft Deleted: {test_users[0].email}: {test_users[0].username}, {test_users[0].deleted}')
+        for rec in CustomUser.objects.all_with_deleted():
+            print(f'After soft delete record 0: {rec.email}: {rec.username}, {rec.deleted}')
         # confirm we have one less
-        assert CustomUser.objects.count() == 3
-        ## Note there is no database check for duplicate email prevention.
-        # To Do: all user creates and updates of email address must be coded to prevent duplicate email
-        # To Do: consider having an admin tool to validate no duplicate email addresses
-        # create a new user with matching email from first record
-        new_user = CustomUserFactory(
-            email=test_users[0].email,
-            first_name=test_users[0].first_name,
-            last_name=test_users[0].last_name,
-        )
-        print(f'Duplicate Email User Created: {new_user.email}: {new_user.username}, {new_user.deleted}')
-        assert CustomUser.objects.count() == 4
-        # soft delete duplicate email user
-        new_user.delete()
-        assert CustomUser.objects.count() == 3
-        # restore the soft deleted user
+        self.assertEqual(CustomUser.objects.all_with_deleted().count(), 4)
+        self.assertEqual(CustomUser.objects.all_deleted().count(), 1)
+
+        # test the pre_save signal that copies the email into the username field
+        # - this ensures that duplicate emails are not allowed at the database level
+        with self.assertRaises(IntegrityError):
+            with transaction.atomic():
+                new_user = CustomUserFactory(
+                    email=test_users[0].email,
+                    username=test_users[0].username,
+                    first_name=test_users[0].first_name,
+                    last_name=test_users[0].last_name,
+                )
+        for rec in CustomUser.objects.all_with_deleted():
+            print(f'After factory attempt to create duplicate of record 0: {rec.email}: {rec.username}, {rec.deleted}')
+        self.assertEqual(CustomUser.objects.all_with_deleted().count(), 4)
+        self.assertEqual(CustomUser.objects.all_deleted().count(), 1)
         test_users[0].undelete()
-        assert CustomUser.objects.count() == 4
+        self.assertEqual(CustomUser.objects.all_with_deleted().count(), 4)
+        self.assertEqual(CustomUser.objects.all_deleted().count(), 0)
         print(f'Restored: {test_users[0].email}: {test_users[0].username}, {test_users[0].deleted}')

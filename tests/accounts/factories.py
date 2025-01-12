@@ -4,7 +4,7 @@ from accounts import models
 class CustomUserFactory(django.DjangoModelFactory):
     class Meta:
         model = models.CustomUser
-    username = Faker('user_name')
+    username = Faker('user_name') # see accounts/signals.py to override this.
     email = Faker('email')
     password=Faker('password')
     last_name=Faker('first_name')
