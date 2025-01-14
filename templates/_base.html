@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +8,14 @@
     <meta name="keywords" content="nutrients, food nutrients, healthy foods, healthy meals, diet, diet assistant, healthy recipes, recipe assistant, open source nutrition" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <!-- keeping css/base.css because it is original stylesheet prior to not fully tested base.scss-->
+    <!-- link rel="stylesheet" href="{% static 'css/base.css' %}" /-->
+    {% compress css %}
+      <link type="text/x-scss" href="{% static 'scss/base.scss' %}" rel="stylesheet" media="screen" />
+      <!--  want bootstrap ??? -->
+      <!-- link type="text/x-scss" href="{% static 'bootstrap_scss/bootstrap.scss' %}" rel="stylesheet" media="screen" -->
+    {% endcompress %}
+
     <script src="{% static 'js/base.js' %}"></script>
     <script>
         window.onload = pageOnLoad;

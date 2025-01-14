@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "debug_toolbar",
     "safedelete",
+    "compressor", # https://www.accordbox.com/blog/how-use-scss-sass-your-django-project-python-way/
     # Local
     "accounts",
     "pages",
@@ -149,6 +150,19 @@ STATIC_URL = "/static/"
 
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# https://www.accordbox.com/blog/how-use-scss-sass-your-django-project-python-way/
+# https://forum.djangoproject.com/t/getting-this-error-on-run-server-locally-compressor-exceptions-uncompressablefileerror-css-style-css-could-not-be-found-in-the-compress-root-users-khushmeeet-dev-codex-staticfiles-or-with-staticfiles/8503/6
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+
+# https://www.accordbox.com/blog/how-use-scss-sass-your-django-project-python-way/
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
 
 # https://whitenoise.readthedocs.io/en/latest/django.html
 STORAGES = {
