@@ -1,6 +1,9 @@
 from factory import Faker, django
 from accounts import models
+import pytest
+from pytest_factoryboy import register
 
+@register
 class CustomUserFactory(django.DjangoModelFactory):
     class Meta:
         model = models.CustomUser
