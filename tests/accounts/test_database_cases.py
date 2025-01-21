@@ -32,14 +32,26 @@ class UserModelsTestCase(TestCase):
         # confirm we now have 4 more
         assert count + 4 == CustomUser.objects.count()
         user0 = test_users[0]
+        print(f'user0 history count: {user0.rec_history_count()}')
+        assert user0.rec_history_count() == 1
+        assert not user0.rec_history_field_changed(0, 'deleted')
         # ensure print output of CustomUser is correct
         self.assertEqual(user0.__str__(), f'{user0.email} - {user0.last_name}, {user0.first_name}')
         print(f'As Created: {user0.email}: {user0.username}, {user0.deleted}')
         # soft delete the first user
         user0.delete()
         print(f'Soft Deleted: {user0.email}: {user0.username}, {user0.deleted}')
+        hist_recs_count = user0.rec_history_count()
+        print(f'user0 after deleted history count: {hist_recs_count}')
+        for n in range(hist_recs_count):
+            print(f'user0 after deleted history [{n}]: {user0.history.all()[0].changes_dict}')
         for rec in CustomUser.objects.all_with_deleted():
             print(f'After soft delete record 0: {rec.email}: {rec.username}, {rec.deleted}')
+        assert user0.rec_history_count() == 2
+        assert user0.rec_history_field_changed(0, 'deleted') # record 0 is the latest
+        assert user0.rec_history_field_was(0, 'deleted') == 'None'
+        assert user0.rec_history_field_is_now(0, 'deleted') == user0.deleted.strftime("%Y-%m-%d %H:%M:%S.%f")
+
         # confirm we have one less
         self.assertEqual(CustomUser.objects.all_with_deleted().count(), 4)
         self.assertEqual(CustomUser.objects.all_deleted().count(), 1)

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "safedelete",
     "compressor", # https://www.accordbox.com/blog/how-use-scss-sass-your-django-project-python-way/
+    "auditlog", # https://django-auditlog.readthedocs.io/en/latest/installation.html
     # Local
     "accounts",
     "pages",
@@ -56,6 +57,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",  # django-allauth
+    # all Request altering middleware need to be registered above/before auditlog middleware, e.g., Django's default middleware classes
+    "auditlog.middleware.AuditlogMiddleware", # https://django-auditlog.readthedocs.io/en/latest/installation.html
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
