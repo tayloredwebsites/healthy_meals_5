@@ -1,9 +1,20 @@
+
 {% load static %}
 {% load compress %}
+{% load i18n %}
+
+{% # variables for page: %}
+{% trans "Healthy Meals: Diet Assistant" as the_app %}
+{% trans "Welcome" as welcome %}
+{% name_or_email = user.email
+  if user.last_name is not None and user.first_name is not None:
+    name_or_email = "{first} {last}".format(first=user.first_name, last=user.last_name)
+%}
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Healthy Meals: Diet Assistant - {% block page_title %}(no page_title){% endblock %}</title>
+    <title>{{ the_app }} - {% block page_title %}{% endblock %}</title>
     <meta name="description" content="Healthy Meals Diet Assistant" />
     <meta name="keywords" content="nutrients, food nutrients, healthy foods, healthy meals, diet, diet assistant, healthy recipes, recipe assistant, open source nutrition" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,8 +43,8 @@
         </section>
         <section id="mainHeader" class="">
           <header>
-            <h1>Healthy Meals: Diet Assistant</h1>
-            <h2>{% block page_h2 %}(no page_h2){% endblock %}</h2>
+            <h1>{{ the_app }}</h1>
+            <h2>{% block page_h2 %}{% endblock %}</h2>
           </header>
         </section>
         <section id="fontSizer" class="">
@@ -49,15 +60,14 @@
           <ul>
             <li><address><span class="rowLabel">Info</span></address></li>
             {% if user.is_authenticated %}
-            <li>Welcome:</li>
-            <li>{{ user.email }}</li>
-            <li><a href="{% url 'account_change_password' %}">Change password</a></li>
-              <li><a href="{% url 'account_logout' %}">Sign out</a></li>
+            <li>{{welcome}}: {{ name_or_email }}</li>
+            <li><a href="{% url 'account_change_password' %}">{% trans "Change password" %}</a></li>
+              <li><a href="{% url 'account_logout' %}">{% trans "Sign out" %}</a></li>
             {% else %}
               <li>
                 <form class="form d-flex">
-                  <a href="{% url 'account_login' %}" class="btn btn-outline-secondary">Log in</a>
-                  <a href="{% url 'account_signup' %}" class="btn btn-primary ms-2">Sign up</a>
+                  <a href="{% url 'account_login' %}" class="btn btn-outline-secondary">{% trans "Log in" %}</a>
+                  <a href="{% url 'account_signup' %}" class="btn btn-primary ms-2">{% trans "Sign up" %}</a>
                 </form>
               </li>
             {% endif %}
@@ -66,12 +76,16 @@
       </header>
       <nav id="topMenu">
         <ul class="flexRow">
-          <li><span><a href="{% url 'home' %}">Home</a></span></li>
-          <li><span><a href="{% url 'about' %}">About</a></span></li>
+          <li><span><a href="{% url 'home' %}">{% trans "Home" %}</a></span></li>
+          <li><span><a href="{% url 'about' %}">{% trans "About" %}</a></span></li>
         </ul>
       </nav>
-      <div id="errorMessage">{% block page_errors %}{% endblock %}</div>
-      <main>{% block page_body %}(no page_body){% endblock %}</main>
+      <div id="errorMessage">
+        {% block page_errors %}{% endblock %}
+      </div>
+      <main>
+        {% block page_body %}(no page_body){% endblock %}
+      </main>
     </main>
   </body>
   <footer>{% block page_footer %}{% endblock %}</footer>
