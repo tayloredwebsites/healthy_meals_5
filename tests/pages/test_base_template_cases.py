@@ -3,6 +3,7 @@ from django.urls import reverse
 from bs4 import BeautifulSoup
 from tests.accounts.factories import CustomUserFactory
 
+#
 class BaseLayoutTestCase(TestCase):
     def setUp(self):
         # Setup run before every test method.

@@ -52,6 +52,11 @@ class CustomUser(SafeDeleteModel, AbstractUser):
             print(f'expected key error auditlog - no changes for field: {e}')
             return ['None', 'None']
 
+    def name_or_email(self):
+        if self.first_name is not None and self.last_name is not None:
+            return "{fname} {lname}".format(fname=self.first_name, lname=self.last_name)
+        else:
+            return self.email
     pass
 
     def __str__(self):
