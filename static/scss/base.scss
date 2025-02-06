@@ -1,0 +1,471 @@
+/* static/base.css */
+
+
+/* *************************************************************************************
+Normalizations
+*/
+
+/* remove list-style from lists */
+ol, ul {
+	list-style: none;
+}
+
+/* normalize margins and padding */
+html, body, div, dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+pre, form, fieldset, input, p, blockquote, th, td
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+/* set height and width to always include border */
+* {
+  box-sizing: border-box;
+}
+
+/* *************************************************************************************
+GLOBAL SITE STYLES
+****************************************************************************************
+*/
+
+html {
+	margin: 0px;
+	font-size: 16px;		/* root font size  of 1rem */
+}
+
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+a {
+	text-decoration: none;
+	/* font-weight: bold; */
+}
+a:link, a:visited {
+	color: darkblue;
+}
+a:hover {
+	color: blue;
+}
+
+a {
+	text-decoration: none;
+	/* font-weight: bold; */
+  &:link, &:visited {
+    color: darkblue;
+  }
+  &:hover {
+    color: blue;
+  }
+}
+
+h1 {line-height: 2.4rem; font-size: 2.2rem; font-weight: bold;}
+h2 {line-height: 2.2rem; font-size: 2.0rem; font-weight: bold;}
+h3 {line-height: 2.0rem; font-size: 1.8rem; font-weight: bold;}
+h4 {line-height: 1.8rem; font-size: 1.6rem; font-weight: bold;}
+h5 {line-height: 1.6rem; font-size: 1.4rem; font-weight: bold;}
+h6 {line-height: 1.4rem; font-size: 1.2rem; font-weight: bold;}
+p {line-height: 1.2rem; font-size: 1.0rem;}
+
+
+/* *********************
+Layout
+*/
+
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+  +header {
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #ffffffcc;
+    margin: 0 10px;
+    +section {
+      justify-content: space-around;
+    }
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  background-color: #f5f5f5;
+}
+
+/* #content_main ul {margin: 1em 0px 1em 2em;}
+#content_main ul li {line-height: 1.6rem; font-size: 1.4rem; margin-left: 2.0rem; list-style-type:disc;} */
+
+#topMenu {
+  padding: 10px;
+  margin: 0 10px 15px 10px;
+  background-color: #ffffffcc;
+  border-radius: 0.5em;
+	box-shadow: 0.2em 0.2em 0.4em #172632;
+  /* center the nav items */
+  display: flex;
+  justify-content: center;
+  + #topMenu + ul + li + span {
+    font-weight: bold;
+  }
+}
+
+
+#mainHeader {
+  width: 60%;
+  text-align: center;
+}
+
+#fontSizer {
+  width: 60px;
+  li {
+    text-align: center;
+
+    span {
+      display: inline-block;
+      padding: 0 .5em;
+      margin: .2em 0;
+      background-color: #f1be11;
+      border-radius: 0.5em;
+      box-shadow: 0.2em 0.2em 0.4em #172632;
+    }
+  }
+  #smallerFont {
+    font-size: 8px;
+    line-height: 10px;
+  }
+  #smallFont {
+    font-size: 11px;
+    line-height: 13px;
+  }
+  #medFont {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  #largeFont {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  #largerFont {
+    font-size: 22px;
+    line-height: 24px;
+  }
+}
+
+
+#topSysMenu ul {
+  justify-content: space-around;
+  font-size: 1.4rem;
+  font-weight: bold;
+  height: 100px;
+}
+
+#topMenu li span {
+  display: inline-block;
+  padding: 0 .7em;
+  margin: 0 .3em;
+	line-height: 1.5em;
+	background-color: #f1be11;
+  border-radius: 0.5em;
+	box-shadow: 0.2rem 0.2rem 0.4rem #172632;
+}
+
+#priNav {
+  ul.nav_info li {
+    width:18em;
+    padding:1em 1em 0 1em;
+  }
+  ul li a {
+    display: block;
+  }
+}
+
+main {
+  justify-content: space-between;
+  margin: 0 10px 10px 10px;
+  header {
+    text-align: center;
+  }
+  header, article {
+    background-color: #ffffffcc;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    header {
+      background-color: #11960166;
+    }
+  }
+  article {
+    &.thin {
+      width: 370px;
+    }
+    &.wide {
+      width: 740px;
+    }
+    + table, &.widest {
+      width: 100%;
+    }
+    + header {
+      text-align: center;
+    }
+      ol {
+      list-style: decimal;
+      margin-left: 20px;
+      ol {
+        list-style: lower-alpha;
+        justify-content: space-between;
+        margin: 10px;
+        li {
+          width: 600px;
+          margin: 10px;
+          background-color: #1ae70333;
+          + section {
+            + section {
+              width: 270px;
+              margin-right: 10px;
+            }
+            + aside {
+              width: 280px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.thinItem {
+  width: 300px;
+}
+.wideItem {
+  width: 600px;
+}
+.widestItem {
+  width: 100%;
+}
+
+/* *********************
+handy classes
+*/
+
+/* handy flexbox classes */
+
+.flexRow {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexAround {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flexBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.visibleFields {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  min-width: 600px;
+  max-width: 900px;
+  margin: auto;
+  + * {
+    display: flex;
+    flex-direction: column;
+  }
+  + label {
+    flex: 1 1;
+    max-width: 200px;
+  }
+  + input {
+    flex: 1 1;
+    max-width: 400px;
+  }
+  + ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 400px;
+    + li {
+      flex: 1 1 125px;
+    }
+  }
+}
+
+/* .visibleFields li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.visibleFields > li > label {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+.visibleFields > li > label + * {
+  flex: 1 0 220px;
+}
+.visibleFields > li > ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1 0 220px;
+} */
+
+/* alignments */
+.center {
+  text-align: center;
+}
+.textLeft {
+  text-align: left;
+}
+.textRight {
+  text-align: right;
+}
+
+/* hide by moving off screen */
+.offScreen {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+.rowLabel {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.notify {
+  font-size: larger;
+  color: #005500;
+  background-color: #ffff00cc;
+}
+
+.roundedCorners {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+/* *********************
+Main header
+*/
+
+#logo {
+	/* background-color: white; */
+	width: 120px;
+	height: 100px;
+}
+
+.youtubeVideo {
+  margin-top: 10px;
+  /* width: 400px;
+  height: 225px; */
+  width: 350px;
+  height: 196px;
+}
+
+table {
+  border-spacing: 0; /* Removes the cell spacing */
+  border-collapse: collapse;  /* remove double border where cells touch */
+  tr td, tr th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+  tbody tr:nth-of-type(even) > * {
+    background-color: #0000dd09;
+  }
+}
+
+.expandCollapse {
+  &:before {
+    font-size: 30px;
+    color: #000;
+    position: absolute;
+    left: 30px;
+    padding-top: 15px;
+    content: '\25b8'; /* Unicode character for Black right-pointing triangle */
+    pointer-events: none;
+  }
+  section {
+    display: none;
+  }
+  &.expanded {
+    &:before {
+      content: '\25be'; /* Unicode character for Black down pointing triangle */
+      pointer-events: none;
+    }
+    section {
+      display: block;
+    }
+  }
+}
+/* .active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+/* } */
+
+
+/* *************************************************************************************
+MEDIA ADJUSTMENTS
+****************************************************************************************
+*/
+
+/* *********************
+Table row dynamically collapse for thin screens using flex
+*/
+@media (max-width: 899px) {
+  table {
+    margin: 10px 0;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid var(--table-border);
+    thead {
+      display: none;
+    }
+    tbody tr {
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      margin-top: 10px;
+    }
+    tr td, tr th {
+      text-align: left;
+      width: 100%;
+    }
+    tr td strong{
+      text-align: left;
+      width: 100%;
+    }
+  }
+}
+
+/* *********************
+Normal Table display for wide screens
+*/
+@media (min-width: 900px) {
+  table td strong {
+    display: none;
+  }
+  table tbody tr {
+    display: table-row
+  }
+  table tr td, table tr th {
+    text-align: center;
+  }
+}
