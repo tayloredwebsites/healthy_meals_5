@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage for .nox/tests/lib/python3.12/site-packages/django/views/templates/technical_500.txt: 0%</title>
+    <link rel="icon" sizes="32x32" href="favicon_32_cb_58284776.png">
+    <link rel="stylesheet" href="style_cb_8e611ae1.css" type="text/css">
+    <script src="coverage_html_cb_6fb7b396.js" defer></script>
+</head>
+<body class="pyfile">
+<header>
+    <div class="content">
+        <h1>
+            <span class="text">Coverage for </span><b>.nox/tests/lib/python3.12/site-packages/django/views/templates/technical_500.txt</b>:
+            <span class="pc_cov">0%</span>
+        </h1>
+        <aside id="help_panel_wrapper">
+            <input id="help_panel_state" type="checkbox">
+            <label for="help_panel_state">
+                <img id="keyboard_icon" src="keybd_closed_cb_ce680311.png" alt="Show/hide keyboard shortcuts">
+            </label>
+            <div id="help_panel">
+                <p class="legend">Shortcuts on this page</p>
+                <div class="keyhelp">
+                    <p>
+                        <kbd>r</kbd>
+                        <kbd>m</kbd>
+                        <kbd>x</kbd>
+                        <kbd>p</kbd>
+                        &nbsp; toggle line displays
+                    </p>
+                    <p>
+                        <kbd>j</kbd>
+                        <kbd>k</kbd>
+                        &nbsp; next/prev highlighted chunk
+                    </p>
+                    <p>
+                        <kbd>0</kbd> &nbsp; (zero) top of page
+                    </p>
+                    <p>
+                        <kbd>1</kbd> &nbsp; (one) first highlighted chunk
+                    </p>
+                    <p>
+                        <kbd>[</kbd>
+                        <kbd>]</kbd>
+                        &nbsp; prev/next file
+                    </p>
+                    <p>
+                        <kbd>u</kbd> &nbsp; up to the index
+                    </p>
+                    <p>
+                        <kbd>?</kbd> &nbsp; show/hide this help
+                    </p>
+                </div>
+            </div>
+        </aside>
+        <h2>
+            <span class="text">61 statements &nbsp;</span>
+            <button type="button" class="run button_toggle_run" value="run" data-shortcut="r" title="Toggle lines run">0<span class="text"> run</span></button>
+            <button type="button" class="mis show_mis button_toggle_mis" value="mis" data-shortcut="m" title="Toggle lines missing">61<span class="text"> missing</span></button>
+            <button type="button" class="exc show_exc button_toggle_exc" value="exc" data-shortcut="x" title="Toggle lines excluded">0<span class="text"> excluded</span></button>
+            <button type="button" class="par run show_par button_toggle_par" value="par" data-shortcut="p" title="Toggle lines partially run">0<span class="text"> partial</span></button>
+        </h2>
+        <p class="text">
+            <a id="prevFileLink" class="nav" href="z_a37e0f4769dd5913_technical_500_html.html">&#xab; prev</a> &nbsp; &nbsp;
+            <a id="indexLink" class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
+            <a id="nextFileLink" class="nav" href="z_b7c03ce6ccfed82c_top_level_txt.html">&#xbb; next</a>
+            &nbsp; &nbsp; &nbsp;
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.6.10">coverage.py v7.6.10</a>,
+            created at 2025-02-07 20:48 -0500
+        </p>
+        <aside class="hidden">
+            <button type="button" class="button_next_chunk" data-shortcut="j"></button>
+            <button type="button" class="button_prev_chunk" data-shortcut="k"></button>
+            <button type="button" class="button_top_of_page" data-shortcut="0"></button>
+            <button type="button" class="button_first_chunk" data-shortcut="1"></button>
+            <button type="button" class="button_prev_file" data-shortcut="["></button>
+            <button type="button" class="button_next_file" data-shortcut="]"></button>
+            <button type="button" class="button_to_index" data-shortcut="u"></button>
+            <button type="button" class="button_show_hide_help" data-shortcut="?"></button>
+        </aside>
+    </div>
+</header>
+<main id="source">
+    <p class="mis show_mis"><span class="n"><a id="t1" href="#t1">1</a></span><span class="t"><span class="txt">{% firstof exception_type 'Report' %}{% if request %} at {{ request.path_info }}{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t2" href="#t2">2</a></span><span class="t"><span class="txt">{% firstof exception_value 'No exception message supplied' %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t3" href="#t3">3</a></span><span class="t"><span class="txt">{% if request %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t4" href="#t4">4</a></span><span class="t"><span class="txt">Request Method: {{ request.META.REQUEST_METHOD }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t5" href="#t5">5</a></span><span class="t"><span class="txt">Request URL: {{ request_insecure_uri }}{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t6" href="#t6">6</a></span><span class="t"><span class="txt">Django Version: {{ django_version_info }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t7" href="#t7">7</a></span><span class="t"><span class="txt">Python Executable: {{ sys_executable }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t8" href="#t8">8</a></span><span class="t"><span class="txt">Python Version: {{ sys_version_info }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t"><span class="txt">Python Path: {{ sys_path }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t10" href="#t10">10</a></span><span class="t"><span class="txt">Server time: {{server_time|date:"r"}}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t11" href="#t11">11</a></span><span class="t"><span class="txt">Installed Applications:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t"><span class="txt">{{ settings.INSTALLED_APPS|pprint }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t13" href="#t13">13</a></span><span class="t"><span class="txt">Installed Middleware:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t14" href="#t14">14</a></span><span class="t"><span class="txt">{{ settings.MIDDLEWARE|pprint }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t"><span class="txt">{% if template_does_not_exist %}Template loader postmortem</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t16" href="#t16">16</a></span><span class="t"><span class="txt">{% if postmortem %}Django tried loading these templates, in this order:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t17" href="#t17">17</a></span><span class="t"><span class="txt">{% for entry in postmortem %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t18" href="#t18">18</a></span><span class="t"><span class="txt">Using engine {{ entry.backend.name }}:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t19" href="#t19">19</a></span><span class="t"><span class="txt">{% if entry.tried %}{% for attempt in entry.tried %}    * {{ attempt.0.loader_name }}: {{ attempt.0.name }} ({{ attempt.1 }})</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t20" href="#t20">20</a></span><span class="t"><span class="txt">{% endfor %}{% else %}    This engine did not provide a list of tried templates.</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t21" href="#t21">21</a></span><span class="t"><span class="txt">{% endif %}{% endfor %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t22" href="#t22">22</a></span><span class="t"><span class="txt">{% else %}No templates were found because your 'TEMPLATES' setting is not configured.</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t23" href="#t23">23</a></span><span class="t"><span class="txt">{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t24" href="#t24">24</a></span><span class="t"><span class="txt">{% endif %}{% if template_info %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t25" href="#t25">25</a></span><span class="t"><span class="txt">Template error:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t26" href="#t26">26</a></span><span class="t"><span class="txt">In template {{ template_info.name }}, error at line {{ template_info.line }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t27" href="#t27">27</a></span><span class="t"><span class="txt">   {{ template_info.message }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t28" href="#t28">28</a></span><span class="t"><span class="txt">{% for source_line in template_info.source_lines %}{% if source_line.0 == template_info.line %}   {{ source_line.0 }} : {{ template_info.before }} {{ template_info.during }} {{ template_info.after }}{% else %}   {{ source_line.0 }} : {{ source_line.1 }}{% endif %}{% endfor %}{% endif %}{% if frames %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t29" href="#t29">29</a></span><span class="t"><span class="txt">&nbsp;</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t30" href="#t30">30</a></span><span class="t"><span class="txt">Traceback (most recent call last):</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t31" href="#t31">31</a></span><span class="t"><span class="txt">{% for frame in frames %}{% ifchanged frame.exc_cause %}{% if frame.exc_cause %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t32" href="#t32">32</a></span><span class="t"><span class="txt">{% if frame.exc_cause_explicit %}The above exception ({{ frame.exc_cause }}) was the direct cause of the following exception:{% else %}During handling of the above exception ({{ frame.exc_cause }}), another exception occurred:{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t33" href="#t33">33</a></span><span class="t"><span class="txt">{% endif %}{% endifchanged %}  {% if frame.tb %}File "{{ frame.filename }}"{% if frame.context_line %}, line {{ frame.lineno }}{% endif %}, in {{ frame.function }}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t34" href="#t34">34</a></span><span class="t"><span class="txt">{% if frame.context_line %}    {% spaceless %}{{ frame.context_line }}{% endspaceless %}{{ frame.tb_area_colno }}{% endif %}{% elif forloop.first %}None{% else %}Traceback: None{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t35" href="#t35">35</a></span><span class="t"><span class="txt">{% endfor %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t36" href="#t36">36</a></span><span class="t"><span class="txt">{% if exception_type %}Exception Type: {{ exception_type }}{% if request %} at {{ request.path_info }}{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t37" href="#t37">37</a></span><span class="t"><span class="txt">{% if exception_value %}Exception Value: {{ exception_value }}{% endif %}{% if exception_notes %}{{ exception_notes }}{% endif %}{% endif %}{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t38" href="#t38">38</a></span><span class="t"><span class="txt">{% if raising_view_name %}Raised during: {{ raising_view_name }}{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t39" href="#t39">39</a></span><span class="t"><span class="txt">{% if request %}Request information:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t40" href="#t40">40</a></span><span class="t"><span class="txt">{% if user_str %}USER: {{ user_str }}{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t41" href="#t41">41</a></span><span class="t"><span class="txt">&nbsp;</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t42" href="#t42">42</a></span><span class="t"><span class="txt">GET:{% for k, v in request_GET_items %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t43" href="#t43">43</a></span><span class="t"><span class="txt">{{ k }} = {{ v|stringformat:"r" }}{% empty %} No GET data{% endfor %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t44" href="#t44">44</a></span><span class="t"><span class="txt">&nbsp;</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t45" href="#t45">45</a></span><span class="t"><span class="txt">POST:{% for k, v in filtered_POST_items %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t46" href="#t46">46</a></span><span class="t"><span class="txt">{{ k }} = {{ v|stringformat:"r" }}{% empty %} No POST data{% endfor %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t47" href="#t47">47</a></span><span class="t"><span class="txt">&nbsp;</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t48" href="#t48">48</a></span><span class="t"><span class="txt">FILES:{% for k, v in request_FILES_items %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t49" href="#t49">49</a></span><span class="t"><span class="txt">{{ k }} = {{ v|stringformat:"r" }}{% empty %} No FILES data{% endfor %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t50" href="#t50">50</a></span><span class="t"><span class="txt">&nbsp;</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t51" href="#t51">51</a></span><span class="t"><span class="txt">COOKIES:{% for k, v in request_COOKIES_items %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t52" href="#t52">52</a></span><span class="t"><span class="txt">{{ k }} = {{ v|stringformat:"r" }}{% empty %} No cookie data{% endfor %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t53" href="#t53">53</a></span><span class="t"><span class="txt">&nbsp;</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t54" href="#t54">54</a></span><span class="t"><span class="txt">META:{% for k, v in request_meta.items|dictsort:0 %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t55" href="#t55">55</a></span><span class="t"><span class="txt">{{ k }} = {{ v|stringformat:"r" }}{% endfor %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t56" href="#t56">56</a></span><span class="t"><span class="txt">{% else %}Request data not supplied</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t57" href="#t57">57</a></span><span class="t"><span class="txt">{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t58" href="#t58">58</a></span><span class="t"><span class="txt">Settings:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t59" href="#t59">59</a></span><span class="t"><span class="txt">Using settings module {{ settings.SETTINGS_MODULE }}{% for k, v in settings.items|dictsort:0 %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t60" href="#t60">60</a></span><span class="t"><span class="txt">{{ k }} = {{ v|stringformat:"r" }}{% endfor %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t61" href="#t61">61</a></span><span class="t"><span class="txt">&nbsp;</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t62" href="#t62">62</a></span><span class="t"><span class="txt">{% if not is_email %}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t63" href="#t63">63</a></span><span class="t"><span class="txt">You&#8217;re seeing this error because you have DEBUG = True in your</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t64" href="#t64">64</a></span><span class="t"><span class="txt">Django settings file. Change that to False, and Django will</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t65" href="#t65">65</a></span><span class="t"><span class="txt">display a standard page generated by the handler for this status code.</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t66" href="#t66">66</a></span><span class="t"><span class="txt">{% endif %}</span>&nbsp;</span><span class="r"></span></p>
+</main>
+<footer>
+    <div class="content">
+        <p>
+            <a class="nav" href="z_a37e0f4769dd5913_technical_500_html.html">&#xab; prev</a> &nbsp; &nbsp;
+            <a class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
+            <a class="nav" href="z_b7c03ce6ccfed82c_top_level_txt.html">&#xbb; next</a>
+            &nbsp; &nbsp; &nbsp;
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.6.10">coverage.py v7.6.10</a>,
+            created at 2025-02-07 20:48 -0500
+        </p>
+    </div>
+</footer>
+</body>
+</html>
