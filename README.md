@@ -1,7 +1,7 @@
 # healthy_meals: A Django-Powered Diet Support Website to help make and eat healthier meals to meet your goals
 
-[![Tests Status](./tests-badge.svg)](./reports/junit/index.html)
-[![Coverage Status](./coverage-badge.svg?dummy=8484744)](./reports/coverage_html/index.html)
+[![Tests Status](./tests-badge.svg)](./reports/junit/report.html)
+[![Coverage Status](./coverage-badge.svg?dummy=8484744)](./reports/coverage/index.html)
 
 ## 🚀 Features
 - Built upon the Lithium Django Starter Project ([Lithium README](./LITHIUM_README.md))

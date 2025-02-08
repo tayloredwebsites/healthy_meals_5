@@ -84,7 +84,7 @@ htmlcov/
 .cache
 .pytest_cache/
 nosetests.xml
-coverage.xml
+# coverage.xml # allow github to report on coverage from the Cobertura xml file
 *.cover
 .hypothesis/
 
