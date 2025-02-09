@@ -11,6 +11,8 @@ env:
   DEBUG: False
   DATABASE_NAME: 'healthy_meals'
   TEST_DATABASE_NAME: 'test_healthy_meals'
+  DATABASE_USER: postgres
+  DATABASE_PASSWORD: postgres
 
 jobs:
   build:
@@ -24,10 +26,10 @@ jobs:
     services:
       postgres:
         image: postgres:16
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: ci_db_test
+        # env:
+        #   POSTGRES_USER: postgres
+        #   POSTGRES_PASSWORD: postgres
+        #   POSTGRES_DB: ci_db_test
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
