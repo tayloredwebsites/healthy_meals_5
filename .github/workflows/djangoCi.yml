@@ -25,6 +25,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: setup secret key
+      run:
+        touch .env
+        echo SECRET_KEY = 'django-insecure-*-f)8&%jk%mc2%!4qqi0m+=%-*i8$#ule@!_!n#s1k@xnl3fz5' >> .env
+        cat .env
     - name: Run Tests
       run: |
         pytest --junitxml=reports/junit/junit.xml --html=reports/junit/index.html 
