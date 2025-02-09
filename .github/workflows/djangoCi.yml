@@ -9,6 +9,8 @@ env:
   SECRET_KEY: 'django-insecure-*-f)8&%jk%mc2%!4qqi0m+=%-*i8$#ule@!_!n#s1k@xnl3fz5'
   DJANGO_LOG_LEVEL: ERROR
   DEBUG: False
+  DATABASE_NAME: 'healthy_meals'
+  TEST_DATABASE_NAME: 'test_healthy_meals'
 
 jobs:
   build:
