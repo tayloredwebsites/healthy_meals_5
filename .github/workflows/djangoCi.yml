@@ -17,24 +17,26 @@ env:
   DATABASE_PASSWORD: postgres
   DATABASE_URL: 'postgres://postgres:postgres@localhost:5432/test_healthy_meals'
 jobs:
-  build:
+  container-job:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.12]
+    # Docker Hub image that `container-job` executes in
+    container: node:20-bookworm-slim
+    # strategy:
+    #   max-parallel: 4
+    #   matrix:
+    #     python-version: [3.12]
     # run postgres in a service container
     services:
       # container label is 'postgres'
       postgres_svc:
         # using Docker Hub Image named postgres
-        image: postgres:16
+        image: postgres
         # provide password for postgres
         env:
-          POSTGRES_HOST: postgres
-          POSTGRES_DB: test_healthy_meals
+          # POSTGRES_HOST: postgres
+          # POSTGRES_DB: test_healthy_meals
           POSTGRES_PASSWORD: postgres
-          POSTGRES_USER: postgres
+          # POSTGRES_USER: postgres
         # ports:
         #   - 5432:5432
         # health checks for waiting until postgres is ready
@@ -62,9 +64,9 @@ jobs:
     - name: Run Tests
       # working-directory: ./postgres
       env:
-        # POSTGRES_HOST: localhost
-        # POSTGRES_PORT: 5432
-        DATABASE_URL: 'postgres://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/test_healthy_meals'
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: 5432
+        # DATABASE_URL: 'postgres://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/test_healthy_meals'
       run: |
         pytest --junitxml=reports/junit/junit.xml --html=reports/junit/index.html 
         coverage run -m pytest tests
