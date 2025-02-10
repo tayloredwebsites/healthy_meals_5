@@ -1,10 +1,11 @@
-name: Django CI
+name: Django Continuous Integration (CI)
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    
 env:
   SECRET_KEY: 'django-insecure-*-f)8&%jk%mc2%!4qqi0m+=%-*i8$#ule@!_!n#s1k@xnl3fz5'
   DJANGO_LOG_LEVEL: ERROR
@@ -16,52 +17,55 @@ env:
   DATABASE_USER: postgres
   DATABASE_PASSWORD: postgres
   DATABASE_URL: 'postgres://postgres:postgres@localhost:5432/test_healthy_meals'
+  
 jobs:
-  container-job:
+  healthy-meals-ci:
+    name: Run CI for Healthy Meals
     runs-on: ubuntu-latest
-    # Docker Hub image that `container-job` executes in
-    container: node:20-bookworm-slim
-    # strategy:
-    #   max-parallel: 4
-    #   matrix:
-    #     python-version: [3.12]
+    strategy:
+      max-parallel:
+      matrix:
+        python-version: [3.12]
+        
     # run postgres in a service container
     services:
-      # container label is 'postgres'
+      # container label is 'postgres_svc'
       postgres_svc:
         # using Docker Hub Image named postgres
         image: postgres
         # provide password for postgres
         env:
-          # POSTGRES_HOST: postgres
-          # POSTGRES_DB: test_healthy_meals
+          POSTGRES_HOST: postgres
+          POSTGRES_DB: postgres
           POSTGRES_PASSWORD: postgres
-          # POSTGRES_USER: postgres
-        # ports:
-        #   - 5432:5432
+          POSTGRES_USER: postgres
+        ports:
+          - 5432:5432
         # health checks for waiting until postgres is ready
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-    # container: postgres
-    # env:
-    #   POSTGRES_HOST: postgres
-    #   POSTGRES_DB: test_healthy_meals
-    #   POSTGRES_PASSWORD: postgres
+          
+    # do the setup and run the CI
     steps:
-    - name: get the code from the repo
+    - name: check postgres_svc
+      run: |
+       echo "Datbase is available on localhost:${{ job.services.postgres_svc.ports['5432'] }}"
+    - name: checkout the code from the repo
       uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
+    - name: display python version
+      run: python -c "import sys; print(sys.version)"
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Run Tests
+    - name: Run CI
       # working-directory: ./postgres
       env:
         POSTGRES_HOST: postgres
