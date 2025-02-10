@@ -11,7 +11,7 @@ env:
   DEBUG: False
   DATABASE_NAME: 'healthy_meals'
   TEST_DATABASE_NAME: 'test_healthy_meals'
-  DATABASE_HOST: postgres
+  DATABASE_HOST: localhost
   DATABASE_PORT: 5432
   DATABASE_USER: postgres
   DATABASE_PASSWORD: postgres
@@ -61,10 +61,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
+      working-directory: ./postgres
       env:
-        # POSTGRES_HOST: postgres
-        # POSTGRES_PORT: 5432
-        DATABASE_URL: 'postgres://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/postgres'
+        POSTGRES_HOST: localhost
+        POSTGRES_PORT: 5432
+        # DATABASE_URL: 'postgres://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/postgres'
       run: |
         pytest --junitxml=reports/junit/junit.xml --html=reports/junit/index.html 
         coverage run -m pytest tests
