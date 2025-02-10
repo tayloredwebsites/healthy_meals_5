@@ -25,37 +25,37 @@ jobs:
       matrix:
         python-version: [3.12]
 
-    # # run postgres in a service container
-    # services:
-    #   # container label is 'postgres'
-    #   postgres:
-    #     # image: postgres:16
-    #     # # env:
-    #     # #   POSTGRES_USER: postgres
-    #     # #   POSTGRES_PASSWORD: postgres
-    #     # #   POSTGRES_DB: ci_db_test
-    #     # ports:
-    #     #   - 5432:5432
-    #     # options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-    #     # using Docker Hub Image named postgres
-    #     image: postgres
-    #     # provide password for postgres
-    #     env:
-    #       POSTGRES_PASSWORD: postgres
-    #     # health checks for waiting until postgres is ready
-    #     options: >-
-    #       --health-cmd pg_isready
-    #       --health-interval 10s
-    #       --health-timeout 5s
-    #       --health-retries 5
-    container: postgres
-    env:
-      POSTGRES_HOST: postgres
-      POSTGRES_DB: test_healthy_meals
-      POSTGRES_PASSWORD: postgres
+    # run postgres in a service container
     services:
+      # container label is 'postgres'
       postgres:
-        image: postgres
+        # image: postgres:16
+        # # env:
+        # #   POSTGRES_USER: postgres
+        # #   POSTGRES_PASSWORD: postgres
+        # #   POSTGRES_DB: ci_db_test
+        # ports:
+        #   - 5432:5432
+        # options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        # using Docker Hub Image named postgres
+        image: postgres:16
+        # provide password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # health checks for waiting until postgres is ready
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    # container: postgres
+    # env:
+    #   POSTGRES_HOST: postgres
+    #   POSTGRES_DB: test_healthy_meals
+    #   POSTGRES_PASSWORD: postgres
+    # services:
+    #   postgres:
+    #     image: postgres
     steps:
     - name: get the code from the repo
       uses: actions/checkout@v4
@@ -68,6 +68,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
+      env:
+        # POSTGRES_HOST: postgres
+        # POSTGRES_PORT: 5432
+        DATABASE_URL: 'postgres://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/postgres'
       run: |
         pytest --junitxml=reports/junit/junit.xml --html=reports/junit/index.html 
         coverage run -m pytest tests
@@ -75,6 +79,3 @@ jobs:
         coverage html
         genbadge coverage
         genbadge tests
-      env:
-        POSTGRES_HOST: postgres
-        POSTGRES_PORT: 5432
