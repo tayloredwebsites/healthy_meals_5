@@ -33,9 +33,10 @@ jobs:
         image: postgres:16
         # provide password for postgres
         env:
+          POSTGRES_HOST: postgres
+          POSTGRES_DB: test_healthy_meals
           POSTGRES_PASSWORD: postgres
-        #   POSTGRES_USER: postgres
-        #   POSTGRES_DB: ci_db_test
+          POSTGRES_USER: postgres
         # ports:
         #   - 5432:5432
         # health checks for waiting until postgres is ready
@@ -63,9 +64,9 @@ jobs:
     - name: Run Tests
       # working-directory: ./postgres
       env:
-        POSTGRES_HOST: localhost
-        POSTGRES_PORT: 5432
-        # DATABASE_URL: 'postgres://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/postgres'
+        # POSTGRES_HOST: localhost
+        # POSTGRES_PORT: 5432
+        DATABASE_URL: 'postgres://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/test_healthy_meals'
       run: |
         pytest --junitxml=reports/junit/junit.xml --html=reports/junit/index.html 
         coverage run -m pytest tests
