@@ -61,6 +61,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: setup secret key
+      run:
+        echo 'django-insecure-*-f)8&%jk%mc2%!4qqi0m+=%-*i8$#ule@!_!n#s1k@xnl3fz5' >> env:SECRET_KEY
     - name: Run Tests
       # working-directory: ./postgres
       env:
