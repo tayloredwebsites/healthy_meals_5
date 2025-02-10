@@ -11,7 +11,7 @@ env:
   DEBUG: False
   DATABASE_NAME: 'healthy_meals'
   TEST_DATABASE_NAME: 'test_healthy_meals'
-  DATABASE_HOST: localhost
+  DATABASE_HOST: postgres
   DATABASE_PORT: 5432
   DATABASE_USER: postgres
   DATABASE_PASSWORD: postgres
@@ -29,19 +29,15 @@ jobs:
     services:
       # container label is 'postgres'
       postgres:
-        # image: postgres:16
-        # # env:
-        # #   POSTGRES_USER: postgres
-        # #   POSTGRES_PASSWORD: postgres
-        # #   POSTGRES_DB: ci_db_test
-        # ports:
-        #   - 5432:5432
-        # options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
         # using Docker Hub Image named postgres
         image: postgres:16
         # provide password for postgres
         env:
           POSTGRES_PASSWORD: postgres
+        #   POSTGRES_USER: postgres
+        #   POSTGRES_DB: ci_db_test
+        # ports:
+        #   - 5432:5432
         # health checks for waiting until postgres is ready
         options: >-
           --health-cmd pg_isready
@@ -53,9 +49,6 @@ jobs:
     #   POSTGRES_HOST: postgres
     #   POSTGRES_DB: test_healthy_meals
     #   POSTGRES_PASSWORD: postgres
-    # services:
-    #   postgres:
-    #     image: postgres
     steps:
     - name: get the code from the repo
       uses: actions/checkout@v4
