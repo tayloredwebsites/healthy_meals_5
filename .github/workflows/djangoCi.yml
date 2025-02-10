@@ -15,7 +15,7 @@ env:
   DATABASE_PORT: 5432
   DATABASE_USER: postgres
   DATABASE_PASSWORD: postgres
-  DATABASE_URL: 'postgres://postgres:postgres@localhost:${{ job.services.postgres.ports[5432] }}/test_healthy_meals'
+  DATABASE_URL: 'postgres://postgres:postgres@localhost:5432/test_healthy_meals'
 jobs:
   build:
     runs-on: ubuntu-latest
