@@ -11,6 +11,8 @@ env:
   DEBUG: False
   DATABASE_NAME: 'healthy_meals'
   TEST_DATABASE_NAME: 'test_healthy_meals'
+  DATABASE_HOST: postgres
+  DATABASE_PORT: 5432
   DATABASE_USER: postgres
   DATABASE_PASSWORD: postgres
 
@@ -68,4 +70,3 @@ jobs:
       env:
         POSTGRES_HOST: postgres
         POSTGRES_PORT: 5432
-        DATABASE_HOST: postgres
