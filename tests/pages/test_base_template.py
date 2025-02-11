@@ -52,6 +52,11 @@ def test_base_not_logged_in():
 
 @pytest.mark.django_db
 def test_base_logged_in():
+    '''
+    - Validate base template display
+    - ensure user with name is displayed using their name
+    - pytest tests/pages/test_base_template.py::test_base_logged_in
+    '''
     print('Starting test_base_template.py::test_base_logged_in')
 
     #############################################
@@ -88,6 +93,41 @@ def test_base_logged_in():
     # confirm the navigation bar has two items - (password change and logout)
     assert len(tsm.find('a', href='/accounts/password/change/')) == 1
     assert len(tsm.find('a', href='/accounts/logout/')) == 1
+
+
+@pytest.mark.django_db
+def test_no_name_has_email():
+    '''
+    - ensure user without a name is displayed using their email
+    - pytest tests/pages/test_base_template.py::test_no_name_has_email
+    '''
+    print('Starting test_no_name_has_email')
+    client = Client() # get web client
+
+    # create a user and log in to the test system
+    user = CustomUserFactory.create(email='test@sample.com', password='password#123', first_name='', last_name='')
+     # # unable to use standard login, must force_login
+    client.force_login(user)
+
+    # get home page for logged in user
+    resp = client.get(reverse("home"))
+    # confirm response is OK
+    assert resp.status_code == 200
+    # parse the html response
+    soup = BeautifulSoup(resp.content, 'html.parser')
+    print('Logged in user web page:')
+    print(soup.prettify())
+
+    # confirm logged in at home page with displays for user as logged in
+    tsm = soup.find(id="topSysMenu")
+    print(f'tm : {tsm}')
+    tsm_ne =  tsm.find(id="tsm_name_email")
+    print(f'tsm_ne: {tsm_ne}')
+    assert user.first_name == ''
+    assert user.last_name == ''
+    assert user.email != '' and user.email != None
+    print(f'email: {user.email}')
+    assert user.email in tsm_ne
 
 
     #############################################

@@ -53,9 +53,10 @@ class CustomUser(SafeDeleteModel, AbstractUser):
             return ['None', 'None']
 
     def name_or_email(self):
-        if self.first_name is not None and self.last_name is not None:
+        if self.first_name != '' and self.last_name != '':
             return "{fname} {lname}".format(fname=self.first_name, lname=self.last_name)
         else:
+            print(f'missing full name, using user email: {self.email}')
             return self.email
     pass
 
