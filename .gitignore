@@ -85,7 +85,11 @@ htmlcov/
 .cache
 .pytest_cache/
 nosetests.xml
-# coverage.xml # allow github to report on coverage from the Cobertura xml file
+# do not pass test coverage xml files up to repo
+# Note: we are allowing the coverage badges links to just the index.html files
+#  this allows for clicking on the badges to bring up the summary html reports
+**/coverage.xml
+**/junit.xml
 
 *.cover
 .hypothesis/
