@@ -4,7 +4,6 @@ import nox
 @nox.session
 def tests(session):
     """Run the test suite, including test reports generation and coverage reports. """
-    # session.install("-r", "requirements.txt")
     session.install("-r", "requirements.txt")
     session.run('pytest', '--junitxml=reports/junit/junit.xml', '--html=reports/junit/index.html')
     session.run('coverage', 'run', '-m', 'pytest', 'tests') # run tests with coverage
