@@ -23,7 +23,7 @@ jobs:
     name: Run CI for Healthy Meals
     runs-on: ubuntu-latest
     strategy:
-      max-parallel:
+      max-parallel: 4
       matrix:
         python-version: [3.12]
         
