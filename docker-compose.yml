@@ -1,19 +1,46 @@
+
+volumes:
+  hm_pg_db_vol: {}
+
+
 services:
   web:
     build: .
-    command: python /code/manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
+    image: hm_web_image
+    container_name: hm_web_image
     ports:
       - 8000:8000
     depends_on:
-      - db
-  db:
-    image: postgres:16
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - pg_db
+    env_file: ".env"
     environment:
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
 
-volumes:
-  postgres_data:
+      POSTGRES_HOST: pg_db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+
+      DATABASE_HOST: pg_db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+
+    command: sh -c "python manage.py makemigrations &&
+        python manage.py migrate &&
+        python3 manage.py runserver 0.0.0.0:8000"
+
+
+  pg_db:
+    image: postgres:16-alpine
+    volumes:
+      - hm_pg_db_vol:/var/lib/postgresql/data
+    restart: unless-stopped
+    environment:
+
+      POSTGRES_HOST: pg_db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}

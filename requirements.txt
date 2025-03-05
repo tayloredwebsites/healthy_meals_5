@@ -2,7 +2,7 @@ asgiref==3.8.1
 django-auditlog==3.0.0
 beautifulsoup4==4.12.3
 certifi==2022.12.7
-cffi==1.15.1
+cffi==1.17.1
 charset-normalizer==3.0.1
 coverage==7.6.10
 crispy-bootstrap5==2024.10
