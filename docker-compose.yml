@@ -1,15 +1,13 @@
 
 volumes:
   hm_pg_db_vol: {}
-  hm_web_vol: {}
+
 
 services:
   web:
     build: .
     image: hm_web_image
     container_name: hm_web_image
-    volumes:
-      - hm_web_vol:/code
     ports:
       - 8000:8000
     depends_on:

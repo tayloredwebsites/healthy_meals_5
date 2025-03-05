@@ -1,0 +1,11 @@
+.gitignore
+'''gitignore handling of the docs branch.
+
+The qa branch will be pushed separately to a github page for proper viewing documentation and qa reports
+
+This will be achieved by having the docs/.gitignore different in the main branch compared with the qa branch.
+- the main branch docs/.gitignore will have a wildcard * to not upload any docs files to the main branch.
+- the qa branch docs/.gitignore will have the not wildcard !* to upload all docs files to the qa branch.
+'''
+*
+!.gitignore

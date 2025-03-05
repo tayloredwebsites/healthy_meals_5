@@ -1,5 +1,0 @@
-# Created by coverage.py
-# - updated to pass the main coverage html report up to the repo
-#   this allows for the links on the coverage badge to show (only) the summary html report
-*
-!index.html
