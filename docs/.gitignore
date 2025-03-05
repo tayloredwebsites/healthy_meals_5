@@ -7,5 +7,5 @@ This will be achieved by having the docs/.gitignore different in the main branch
 - the main branch docs/.gitignore will have a wildcard * to not upload any docs files to the main branch.
 - the qa branch docs/.gitignore will have the not wildcard !* to upload all docs files to the qa branch.
 '''
-*
-!.gitignore
+# *
+# !.gitignore
