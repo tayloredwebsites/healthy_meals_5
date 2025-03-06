@@ -1,9 +1,12 @@
 # healthy_meals: Meet your Dietary Goals with Healthier Meals
 
-[//]: # (https://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/BZR3uzdbU6P9JdMbhCLMmZ/PhQcorR5decQrvhgn17chH/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/BZR3uzdbU6P9JdMbhCLMmZ/PhQcorR5decQrvhgn17chH/tree/main)
+[![Coverage Status](https://tayloredwebsites.github.io/healthy_meals_5/qa/coverage/coverage_badge.svg)](https://tayloredwebsites.github.io/√/qa/coverage/html/index.html)
+[![Test Status](https://tayloredwebsites.github.io/healthy_meals_5/qa/tests/tests_badge.svg)](https://tayloredwebsites.github.io/healthy_meals_5/qa/tests/index.html)
+[![](https://tayloredwebsites.github.io/healthy_meals_5/qa/flake8/flake8_badge.svg)](https://tayloredwebsites.github.io/healthy_meals_5/qa/flake8/html/index.html)
+[![](https://tayloredwebsites.github.io/healthy_meals_5/mypy_badge.svg)](https://tayloredwebsites.github.io/healthy_meals_5/qa/mypy/index.html)
 
-[![Tests Status](./tests-badge.svg)](https://htmlpreview.github.io/?https://github.com/tayloredwebsites/healthy_meals/blob/main/reports/junit/index.html)
-[![Coverage Status](./coverage-badge.svg)](https://htmlpreview.github.io/?https://github.com/tayloredwebsites/healthy_meals/blob/main/reports/coverage_html/index.html)
+[Documentation]("https://tayloredwebsites.github.io/healthy_meals_5/index.html")
 
 ## 🚀 Base Project Features
 - Runs in Docker or locally
