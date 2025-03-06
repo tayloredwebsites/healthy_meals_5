@@ -13,7 +13,7 @@ tests/pages/test_base_template_cases.py ..                               [100%]
 
 - generated xml file: /Users/dave/works/python/healthy_meals_5/docs/qa/tests/junit.xml -
 - Generated html report: file:///Users/dave/works/python/healthy_meals_5/docs/qa/tests/index.html -
-============================== 7 passed in 1.96s ===============================
+============================== 7 passed in 2.59s ===============================
 SUCCESS - Tests badge created: '/Users/dave/works/python/healthy_meals_5/docs/qa/tests/tests_badge.svg'
 Wrote XML report to ./docs/qa/coverage/coverage.xml
 Wrote HTML report to ./docs/qa/coverage/html/index.html
