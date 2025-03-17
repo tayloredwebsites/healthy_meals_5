@@ -27,8 +27,11 @@ services:
       DATABASE_USER: ${DATABASE_USER}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
 
+    platform: linux/x86_64
     command: sh -c "python manage.py makemigrations &&
         python manage.py migrate &&
+        sass static/scss:static/css &&
+        python manage.py collectstatic --noinput &&
         python3 manage.py runserver 0.0.0.0:8000"
 
 
