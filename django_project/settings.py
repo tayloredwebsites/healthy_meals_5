@@ -170,9 +170,8 @@ STATICFILES_FINDERS = [
     'compressor.finders.CompressorFinder',
 ]
 
-# https://www.accordbox.com/blog/how-use-scss-sass-your-django-project-python-way/
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
+    # deprecated libsass removed from here - using installed dart-sass
 )
 
 # https://whitenoise.readthedocs.io/en/latest/django.html
