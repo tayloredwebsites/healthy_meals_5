@@ -1,0 +1,124 @@
+Documentation Guide
+======================================================================
+
+
+Overview
+----------------------------------------------------------------------
+
+Documentation has been developed using the defacto standard (for django/python) `Sphinx <https://www.sphinx-doc.org/>`_ toolset. To automatically update all module, class, and function documentation, the following procedure can be used.
+
+The following documentation standards are recognized by this toolset configuration: `NumPy <https://numpy.org/doc/stable/>`_ , `Google <https://google.github.io/styleguide/pyguide.html>`_ , and `rst <https://peps.python.org/pep-0287/>`_  by using the `Napoleon <https://sphinxcontrib-napoleon.readthedocs.io/en/latest/>`_ extension to Sphinx.
+
+
+Procedure to regenerate the documentation to the docs/build/html folder.
+------------------------------------------------------------------------
+
+Confirm you are in the root directory (directory containing manage.py)
+
+.. code-block:: shell
+
+   pwd
+
+Generate the .rst files in the docs/source directory:
+    Note: setup was initially run, making `docs/` as the documentation folder:  `sphinx-quickstart docs`
+
+    The sphinx extension `apidoc <https://www.sphinx-doc.org/en/master/man/sphinx-apidoc.html>`_ is used to automatically document code using signatures and docstrings from the code, and place it in .rst files (and then later into .html files).
+
+    We needed an exclusion list of modules to ignore because we are not using an apps/ folder.
+    This is because we are following the standard django structure (to have all apps off of root):
+    `djangoproject.com (Creating an app). <https://docs.djangoproject.com/en/2.2/intro/tutorial01/#s-creating-the-polls-app>`_ .
+    All exclusions are listed after the '.' (the root folder).
+
+.. code-block:: shell
+
+   sphinx-apidoc -o docs/source . **/migrations django_project docs/* manage.py noxfile.py
+
+Consider removing the previous built documentation
+      to ensure everything is rebuilt and no stale documentation remains.
+
+.. code-block:: shell
+
+   rm -fr docs/build/
+
+Build the sphinx documentation from docs/source into the docs/build/html directory.
+    Note: You may want to review the .rst files in the docs/source directory before doing this.
+
+.. code-block:: shell
+
+   make --directory=docs
+
+Notes:
+you may want to review the output of the make for warnings or errors
+If you have added any new apps, you should add them to the index.rst file, so they are available at the top level of documentation.
+
+
+Understanding the custom .rst files (docs_guide.rst, index.rst, and conf.py)
+----------------------------------------------------------------------------
+
+The index.rst file is a customized version of the initial one created by sphinx-quickstart.  It has a table of contents that looks like:
+
+.. code-block:: rst
+
+    Table of Contents
+    -----------------
+
+    .. toctree::
+        :maxdepth: 2
+        :caption: Contents:
+
+        Index<genindex>
+        Module Index<modindex>
+        Search<search>
+        User Accounts</accounts>
+        Misc. Pages</pages>
+        Tests</tests>
+        Documentation Guide</docs_guide>
+        All Current Modules</modules>
+
+The Table of Contents (TOC) has been customized in the following ways:
+
+- the ``genindex`` tool (labeled ``Index``) has been placed at the top to provide an index to the entire project.
+- the ``modindex`` tool (labeled ``Module Index``) has been added to provide an index to all modules of the project.
+- the ``search`` tool (labeled ``Search``) has been added to search the entire project.
+- the ``/accounts`` apidoc generated file (``User Accounts``) is added to the TOC.
+- the ``/pages`` apidoc generated file (``Misc. Pages``) is added to the TOC.
+- the ``/tests`` apidoc generated file (``Tests``, and its children files) is added to the TOC.
+- the ``/docs_guide`` (this custom .rst file) is added to the TOC.
+
+Note the format of the entries in the TOC is as follows:  "The Name With Spaces<[/]rst_filename_without_extension>"
+
+- The name to display in the TOC.
+- the name of the .rst file (without the .rst extension) is contained within "<" and ">".
+- the name may have a leading optional "/" to ensure that it is always in the (main) TOC.
+
+Sphinx & rst resources:
+----------------------------------------------------------------------
+
+- `Sphinx Docs <https://www.sphinx-doc.org/en/master/index.html>`_ .
+- `documentation.help <https://documentation.help/Sphinx/index.html>`_ .
+- `documentation.help-Toc Tree <https://documentation.help/Sphinx/toctree.html>`_ .
+- `Idiots Guide <https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/>`_ .
+- `ianhopkinson.org.uk <https://ianhopkinson.org.uk/2021/09/python-documentation-with-sphinx/>`_ .
+- `sphinxcontrib <https://sphinxcontrib-django.readthedocs.io/en/latest/readme.html>`_ .
+- `sphinx apidoc <https://www.sphinx-doc.org/en/master/man/sphinx-apidoc.html>`_ .
+- `restructured text <https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html>`_ .
+- `sphinx tutorial <https://sphinx-tutorial.readthedocs.io/>`_ .
+- `sphinx rtd theme <https://pypi.org/project/sphinx-rtd-theme/>`_ .
+- `Cheat Sheet <https://bashtage.github.io/sphinx-material/rst-cheatsheet/rst-cheatsheet.html>`_ .
+
+
+To Do: Automation and Dockerizing Documentation
+----------------------------------------------------------------------
+
+To compile all docstrings automatically into documentation source files, use the command:
+    ::
+
+        make apidocs
+
+
+This can be done in the docker container:
+    ::
+
+        ..
+            docker run --rm docs make apidocs (This does not work!)
+        docker compose -f docker-compose.docs.yml run --rm docs make apidocs

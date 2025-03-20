@@ -7,7 +7,7 @@ Main branch pushes should not update the /docs folder, thus:
   - except we need to have this .gitignore in the git repo to tell git to follow these instructions.
     - to do this, we have the next line read: !.gitignore
     - the ! in front  of .gitignore tells git to not ignore .gitignore
-    - by which we put .gitignore into the repo
+    - thus we put .gitignore into the repo
     - thus we ensure that the other files are not put into the repo.
 
 Only the QA branch should update the /docs folder
@@ -17,4 +17,3 @@ Only the QA branch should update the /docs folder
 
 # *
 # !.gitignore
-build/doctrees
