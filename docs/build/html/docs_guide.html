@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation Guide &mdash; Healthy Meals  documentation</title>
+  <title>Documentation Guide &mdash; Healthy Meals Diet Assistant  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=de96878a" />
@@ -20,7 +20,6 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="healthy_meals_5" href="modules.html" />
     <link rel="prev" title="tests.pages package" href="tests.pages.html" /> 
 </head>
 
@@ -33,7 +32,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            Healthy Meals
+            Healthy Meals Diet Assistant
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -45,21 +44,25 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="qa.html">Quality Assurance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="py-modindex.html">Module Index</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a></li>
-<li class="toctree-l1"><a class="reference internal" href="accounts.html">User Accounts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pages.html">Misc. Pages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">User Accounts Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages.html">Misc. Pages Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests Module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#procedure-to-regenerate-the-documentation-to-the-docs-build-html-folder">Procedure to regenerate the documentation to the docs/build/html folder.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#understanding-the-custom-rst-files-docs-guide-rst-index-rst-and-conf-py">Understanding the custom .rst files (docs_guide.rst, index.rst, and conf.py)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sphinx-rst-resources">Sphinx &amp; rst resources:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-documentation">Code Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-the-custom-rst-anc-config-files-docs-guide-rst-index-rst-and-conf-py">Understanding the custom .rst anc config files (docs_guide.rst, index.rst, and conf.py)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-index-rst-file-is-a-customized-version-of-the-initial-one-created-by-sphinx-quickstart">The index.rst file is a customized version of the initial one created by sphinx-quickstart.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-qa-rst-file-is-a-custom-rst-file-to-integrate-in-the-pytest-reports">The qa.rst file is a custom .rst file to integrate in the pytest reports.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sphinx-restructured-text-rst-guides-and-resources">Sphinx &amp; Restructured Text (rst) guides and resources:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#to-do-automation-and-dockerizing-documentation">To Do: Automation and Dockerizing Documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">All Current Modules</a></li>
 </ul>
 
         </div>
@@ -68,7 +71,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Healthy Meals</a>
+          <a href="index.html">Healthy Meals Diet Assistant</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -106,9 +109,19 @@
 This is because we are following the standard django structure (to have all apps off of root):
 <a class="reference external" href="https://docs.djangoproject.com/en/2.2/intro/tutorial01/#s-creating-the-polls-app">djangoproject.com (Creating an app).</a> .
 All exclusions are listed after the ‘.’ (the root folder).</p>
+<p>CAUTION: Do not remove the following files in the docs/source directory, as these are custom files:</p>
+<ul class="simple">
+<li><p>conf.py</p></li>
+<li><p>docs_guide.rst</p></li>
+<li><p>index.rst</p></li>
+<li><p>qa.rst</p></li>
+</ul>
 </dd>
 </dl>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sphinx-apidoc<span class="w"> </span>-o<span class="w"> </span>docs/source<span class="w"> </span>.<span class="w"> </span>**/migrations<span class="w"> </span>django_project<span class="w"> </span>docs/*<span class="w"> </span>manage.py<span class="w"> </span>noxfile.py
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>apidocs<span class="w"> </span>--directory<span class="o">=</span>docs
+
+<span class="c1"># or manually</span>
+sphinx-apidoc<span class="w"> </span>-o<span class="w"> </span>docs/source<span class="w"> </span>.<span class="w"> </span>**/migrations<span class="w"> </span>django_project<span class="w"> </span>docs/*<span class="w"> </span>manage.py<span class="w"> </span>noxfile.py
 </pre></div>
 </div>
 <dl class="simple">
@@ -118,38 +131,65 @@ All exclusions are listed after the ‘.’ (the root folder).</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-fr<span class="w"> </span>docs/build/
 </pre></div>
 </div>
-<dl class="simple">
+<dl>
 <dt>Build the sphinx documentation from docs/source into the docs/build/html directory.</dt><dd><p>Note: You may want to review the .rst files in the docs/source directory before doing this.</p>
+<p>See: docs/Makefile</p>
 </dd>
 </dl>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>--directory<span class="o">=</span>docs
+
+<span class="c1"># or alternatively</span>
+make<span class="w"> </span>-C<span class="w"> </span>docs
+
+<span class="c1"># or alternatively</span>
+make<span class="w"> </span>html<span class="w"> </span>--directory<span class="o">=</span>docs
+
+<span class="c1"># or alternatively</span>
+make<span class="w"> </span>html<span class="w"> </span>-C<span class="w"> </span>docs
+
+<span class="c1"># or manually</span>
+<span class="w"> </span>sphinx-build<span class="w"> </span>-M<span class="w"> </span>html<span class="w"> </span>docs/source<span class="w"> </span>docs/build
 </pre></div>
 </div>
 <p>Notes:
 you may want to review the output of the make for warnings or errors
 If you have added any new apps, you should add them to the index.rst file, so they are available at the top level of documentation.</p>
 </section>
-<section id="understanding-the-custom-rst-files-docs-guide-rst-index-rst-and-conf-py">
-<h2>Understanding the custom .rst files (docs_guide.rst, index.rst, and conf.py)<a class="headerlink" href="#understanding-the-custom-rst-files-docs-guide-rst-index-rst-and-conf-py" title="Link to this heading"></a></h2>
-<p>The index.rst file is a customized version of the initial one created by sphinx-quickstart.  It has a table of contents that looks like:</p>
+<section id="code-documentation">
+<h2>Code Documentation<a class="headerlink" href="#code-documentation" title="Link to this heading"></a></h2>
+<p>The philosophy of documentation in the Healthy Meals project is to have the documentation be part of what is being documented.
+The Sphinx toolset provides the capability of doing this using:</p>
+<ul class="simple">
+<li><p>the <a class="reference external" href="https://documentation.help/Sphinx/toctree.html">Toc Tree &#64; documentation.help</a> extension to manage a Table of Contents.</p></li>
+<li><p>the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">sphinx autodoc</a> extension to extract the documentation as well as extract documentation from the code itself.</p></li>
+<li><p>the <a class="reference external" href="https://www.sphinx-doc.org/en/master/man/sphinx-apidoc.html">sphinx apidoc</a> extension to generate the documentation in the form of .rst (<a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html">restructured text</a> files).</p></li>
+<li><p>the <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/">sphinx napoleon</a> extension to allow for rst, google or numpy style documentation.</p></li>
+</ul>
+<p>The choice to use the google style documentation was motivated by an sphinx article on <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/#google-vs-numpy">napoleon legible docstrings</a>.  It is recommended to use one style through out a project, and the <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">google style</a> seems to be more popular, especially for non-scientific applications.</p>
+<p>See this excellent <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google Style Python Docstrings</a> for examples of google style code docstrings.</p>
+</section>
+<section id="understanding-the-custom-rst-anc-config-files-docs-guide-rst-index-rst-and-conf-py">
+<h2>Understanding the custom .rst anc config files (docs_guide.rst, index.rst, and conf.py)<a class="headerlink" href="#understanding-the-custom-rst-anc-config-files-docs-guide-rst-index-rst-and-conf-py" title="Link to this heading"></a></h2>
+<section id="the-index-rst-file-is-a-customized-version-of-the-initial-one-created-by-sphinx-quickstart">
+<h3>The index.rst file is a customized version of the initial one created by sphinx-quickstart.<a class="headerlink" href="#the-index-rst-file-is-a-customized-version-of-the-initial-one-created-by-sphinx-quickstart" title="Link to this heading"></a></h3>
+<p>It has a table of contents that looks like:</p>
 <div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Table of Contents</span>
 <span class="gh">-----------------</span>
 
 <span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
-    <span class="nc">:maxdepth:</span> 2
-    <span class="nc">:caption:</span> Contents:
+<span class="nc">:maxdepth:</span> 2
+<span class="nc">:caption:</span> Contents:
 
-    Index&lt;genindex&gt;
-    Module Index&lt;modindex&gt;
-    Search&lt;search&gt;
-    User Accounts&lt;/accounts&gt;
-    Misc. Pages&lt;/pages&gt;
-    Tests&lt;/tests&gt;
-    Documentation Guide&lt;/docs_guide&gt;
-    All Current Modules&lt;/modules&gt;
+Quality Assurance&lt;/qa&gt;
+Index&lt;genindex&gt;
+Module Index&lt;modindex&gt;
+User Accounts Module&lt;/accounts&gt;
+Misc. Pages Module&lt;/pages&gt;
+Tests Module&lt;/tests&gt;
+Documentation Guide&lt;/docs_guide&gt;
 </pre></div>
 </div>
-<p>The Table of Contents (TOC) has been customized in the following ways:</p>
+<p>The Table of Contents (TOC) is what shows up in the sidebar navigation.  It has been customized in the following ways:</p>
 <ul class="simple">
 <li><p>the <code class="docutils literal notranslate"><span class="pre">genindex</span></code> tool (labeled <code class="docutils literal notranslate"><span class="pre">Index</span></code>) has been placed at the top to provide an index to the entire project.</p></li>
 <li><p>the <code class="docutils literal notranslate"><span class="pre">modindex</span></code> tool (labeled <code class="docutils literal notranslate"><span class="pre">Module</span> <span class="pre">Index</span></code>) has been added to provide an index to all modules of the project.</p></li>
@@ -166,20 +206,25 @@ If you have added any new apps, you should add them to the index.rst file, so th
 <li><p>the name may have a leading optional “/” to ensure that it is always in the (main) TOC.</p></li>
 </ul>
 </section>
-<section id="sphinx-rst-resources">
-<h2>Sphinx &amp; rst resources:<a class="headerlink" href="#sphinx-rst-resources" title="Link to this heading"></a></h2>
+<section id="the-qa-rst-file-is-a-custom-rst-file-to-integrate-in-the-pytest-reports">
+<h3>The qa.rst file is a custom .rst file to integrate in the pytest reports.<a class="headerlink" href="#the-qa-rst-file-is-a-custom-rst-file-to-integrate-in-the-pytest-reports" title="Link to this heading"></a></h3>
+<p>The <a class="reference external" href="https://sphinxfeatures.readthedocs.io/en/latest/Raw%20Directive.html">Sphinx Raw Directive</a> is
+used to have custom HTML for linked images placed in the Quality Assurance page.</p>
+<p>Linking is provided using <a class="reference external" href="https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html">Link Documentation</a>.</p>
+<p>Code can be displayed using <a class="reference external" href="https://ikerdocs-sphinx.readthedocs.io/syntax/code.html">Code Blocks</a>.</p>
+</section>
+</section>
+<section id="sphinx-restructured-text-rst-guides-and-resources">
+<h2>Sphinx &amp; Restructured Text (rst) guides and resources:<a class="headerlink" href="#sphinx-restructured-text-rst-guides-and-resources" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/index.html">Sphinx Docs</a> .</p></li>
-<li><p><a class="reference external" href="https://documentation.help/Sphinx/index.html">documentation.help</a> .</p></li>
-<li><p><a class="reference external" href="https://documentation.help/Sphinx/toctree.html">documentation.help-Toc Tree</a> .</p></li>
-<li><p><a class="reference external" href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/">Idiots Guide</a> .</p></li>
-<li><p><a class="reference external" href="https://ianhopkinson.org.uk/2021/09/python-documentation-with-sphinx/">ianhopkinson.org.uk</a> .</p></li>
-<li><p><a class="reference external" href="https://sphinxcontrib-django.readthedocs.io/en/latest/readme.html">sphinxcontrib</a> .</p></li>
-<li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/man/sphinx-apidoc.html">sphinx apidoc</a> .</p></li>
-<li><p><a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html">restructured text</a> .</p></li>
-<li><p><a class="reference external" href="https://sphinx-tutorial.readthedocs.io/">sphinx tutorial</a> .</p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/sphinx-rtd-theme/">sphinx rtd theme</a> .</p></li>
-<li><p><a class="reference external" href="https://bashtage.github.io/sphinx-material/rst-cheatsheet/rst-cheatsheet.html">Cheat Sheet</a> .</p></li>
+<li><p><a class="reference external" href="https://sphinx-tutorial.readthedocs.io/">sphinx tutorial</a>.</p></li>
+<li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/index.html">Sphinx Docs</a>.</p></li>
+<li><p><a class="reference external" href="https://documentation.help/Sphinx/index.html">Sphinx &#64; documentation.help</a>.</p></li>
+<li><p>The <a class="reference external" href="https://sphinxcontrib-django.readthedocs.io/en/latest/readme.html">sphinxcontrib Module</a>.</p></li>
+<li><p><a class="reference external" href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/">Sphinx Idiots Guide</a>.</p></li>
+<li><p><a class="reference external" href="https://ianhopkinson.org.uk/2021/09/python-documentation-with-sphinx/">ianhopkinson.org.uk</a>.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/sphinx-rtd-theme/">sphinx rtd theme</a> that is used in this project.</p></li>
+<li><p>One of many possible <a class="reference external" href="https://bashtage.github.io/sphinx-material/rst-cheatsheet/rst-cheatsheet.html">Cheat Sheets</a>.</p></li>
 </ul>
 </section>
 <section id="to-do-automation-and-dockerizing-documentation">
@@ -204,13 +249,12 @@ docker compose -f docker-compose.docs.yml run --rm docs make apidocs
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="tests.pages.html" class="btn btn-neutral float-left" title="tests.pages package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="modules.html" class="btn btn-neutral float-right" title="healthy_meals_5" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, David Andrews Taylor @ Taylored Web Sites.</p>
+    <p>&#169; Copyright 2025, David A. Taylor @ Taylored Web Sites.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

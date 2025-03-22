@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>accounts package &mdash; Healthy Meals  documentation</title>
+  <title>accounts package &mdash; Healthy Meals Diet Assistant  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=de96878a" />
@@ -32,7 +32,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            Healthy Meals
+            Healthy Meals Diet Assistant
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -44,10 +44,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="qa.html">Quality Assurance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="py-modindex.html">Module Index</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search.html">Search</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">User Accounts</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Accounts Module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-accounts.admin">accounts.admin module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#accounts.admin.CustomUserAdmin"><code class="docutils literal notranslate"><span class="pre">CustomUserAdmin</span></code></a><ul>
@@ -127,42 +127,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-accounts">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pages.html">Misc. Pages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages.html">Misc. Pages Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs_guide.html">Documentation Guide</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">All Current Modules</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">accounts package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-accounts.admin">accounts.admin module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#accounts.admin.CustomUserAdmin"><code class="docutils literal notranslate"><span class="pre">CustomUserAdmin</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-accounts.apps">accounts.apps module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#accounts.apps.AccountsConfig"><code class="docutils literal notranslate"><span class="pre">AccountsConfig</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-accounts.forms">accounts.forms module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#accounts.forms.CustomUserChangeForm"><code class="docutils literal notranslate"><span class="pre">CustomUserChangeForm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accounts.forms.CustomUserCreationForm"><code class="docutils literal notranslate"><span class="pre">CustomUserCreationForm</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-accounts.models">accounts.models module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#accounts.models.CustomUser"><code class="docutils literal notranslate"><span class="pre">CustomUser</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accounts.models.CustomUserManager"><code class="docutils literal notranslate"><span class="pre">CustomUserManager</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-accounts.signals">accounts.signals module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#accounts.signals.email_is_also_username"><code class="docutils literal notranslate"><span class="pre">email_is_also_username()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-accounts.views">accounts.views module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-accounts">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pages.html">pages package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tests.html">tests package</a></li>
-</ul>
-</li>
 </ul>
 
         </div>
@@ -171,7 +138,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Healthy Meals</a>
+          <a href="index.html">Healthy Meals Diet Assistant</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -593,10 +560,29 @@ instances.</p>
 <dt class="sig sig-object py" id="accounts.models.CustomUserManager">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">accounts.models.</span></span><span class="sig-name descname"><span class="pre">CustomUserManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/accounts/models.html#CustomUserManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#accounts.models.CustomUserManager" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">SafeDeleteManager</span></code>, <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/contrib/auth/#django.contrib.auth.models.UserManager" title="(in Django v5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserManager</span></code></a></p>
+<p>Custom User model Manager class (‘objects’).</p>
+<p>Manager class for CustomUsers (Accounts).  Access to this class is through the ‘objects’
+instance attribute of the CustomUser Class.</p>
+<p>Soft Delete of Users are implemented through SafeDelete.
+See: <a class="reference external" href="https://django-safedelete.readthedocs.io/en/latest/managers.html">https://django-safedelete.readthedocs.io/en/latest/managers.html</a></p>
+<p>Note:</p>
+<p>Args:
+param1 (class): SafeDelete manager class mixin
+param2 (class): UserManager  for CustomUser Abstract Class</p>
+<p>Attributes:</p>
+<p>Returns:</p>
+<p>Raises:</p>
+<p>Example:</p>
+<p>Todo:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="accounts.models.CustomUserManager.all_deleted">
 <span class="sig-name descname"><span class="pre">all_deleted</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/accounts/models.html#CustomUserManager.all_deleted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#accounts.models.CustomUserManager.all_deleted" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns all soft deleted customuser records.</p>
+<p>Args:
+param1 (Class): self.</p>
+<p>Returns:
+recordset: The soft deleted custom user records.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -627,7 +613,7 @@ instances.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, David Andrews Taylor @ Taylored Web Sites.</p>
+    <p>&#169; Copyright 2025, David A. Taylor @ Taylored Web Sites.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
