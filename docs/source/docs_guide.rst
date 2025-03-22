@@ -13,21 +13,31 @@ The following documentation standards are recognized by this toolset configurati
 Procedure to regenerate the documentation to the docs/build/html folder.
 ------------------------------------------------------------------------
 
-Confirm you are in the root directory (directory containing manage.py)
+First, confirm you are in the root directory (directory containing manage.py)
+    Note: The Sphinx setup was initially run with the command `sphinx-quickstart docs`, making `docs/` as the documentation folder.
+    This means that when generating the documentation you should:
 
-.. code-block:: shell
-
-   pwd
-
-Generate the .rst files in the docs/source directory:
-    Note: setup was initially run, making `docs/` as the documentation folder:  `sphinx-quickstart docs`
+    - be in the root directory of the project (where manage.py exists).
+    - specify the doc directory location ( --directory=docs, or -C docs)
 
     The sphinx extension `apidoc <https://www.sphinx-doc.org/en/master/man/sphinx-apidoc.html>`_ is used to automatically document code using signatures and docstrings from the code, and place it in .rst files (and then later into .html files).
 
     We needed an exclusion list of modules to ignore because we are not using an apps/ folder.
     This is because we are following the standard django structure (to have all apps off of root):
     `djangoproject.com (Creating an app). <https://docs.djangoproject.com/en/2.2/intro/tutorial01/#s-creating-the-polls-app>`_ .
-    All exclusions are listed after the '.' (the root folder).
+    All exclusions are listed after the '.' (the root folder) see `docs/Makefile` and `docs/source/conf.py`.
+
+    We build the sphinx .rst files in the docs/source, then build html into the docs/build/html directory.
+
+    CAUTION: Do not remove the following files in the docs/source directory, as these are custom files:
+
+    - conf.py
+    - docs_guide.rst
+    - index.rst
+    - prog_guide.rst
+    - qa.rst
+
+To Build the Documentation:
 
     CAUTION: Do not remove the following files in the docs/source directory, as these are custom files:
 
@@ -38,26 +48,23 @@ Generate the .rst files in the docs/source directory:
 
 .. code-block:: shell
 
-   make apidocs --directory=docs
+    nox -s makeDocs
 
-   # or manually
-   sphinx-apidoc -o docs/source . **/migrations django_project docs/* manage.py noxfile.py
+    # or using make
+    make apidocs --directory=docs
+    make html --directory=docs
 
-Consider removing the previous built documentation
-      to ensure everything is rebuilt and no stale documentation remains.
-
-.. code-block:: shell
-
-   rm -fr docs/build/
-
-Build the sphinx documentation from docs/source into the docs/build/html directory.
-    Note: You may want to review the .rst files in the docs/source directory before doing this.
-
-    See: docs/Makefile
+To Rebuild the Documentation:
 
 .. code-block:: shell
 
-   make --directory=docs
+    nox -s remakeDocs
+
+    # or using make
+    make apidocs --directory=docs
+    make allhtml --directory=docs
+
+The final HTML documention main index page is: `docs/build/html/index.html`
 
    # or alternatively
    make -C docs
@@ -95,7 +102,6 @@ See this excellent `Google Style Python Docstrings <https://sphinxcontrib-napole
 Understanding the custom .rst anc config files (docs_guide.rst, index.rst, and conf.py)
 ---------------------------------------------------------------------------------------
 
-
 The index.rst file is a customized version of the initial one created by sphinx-quickstart.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -117,7 +123,6 @@ It has a table of contents that looks like:
     Misc. Pages Module</pages>
     Tests Module</tests>
     Documentation Guide</docs_guide>
-
 
 The Table of Contents (TOC) is what shows up in the sidebar navigation.  It has been customized in the following ways:
 
@@ -148,7 +153,7 @@ Code can be displayed using `Code Blocks <https://ikerdocs-sphinx.readthedocs.io
 
 
 Sphinx & Restructured Text (rst) guides and resources:
--------------------------------------------
+------------------------------------------------------
 
 - `sphinx tutorial <https://sphinx-tutorial.readthedocs.io/>`_.
 - `Sphinx Docs <https://www.sphinx-doc.org/en/master/index.html>`_.
@@ -161,7 +166,7 @@ Sphinx & Restructured Text (rst) guides and resources:
 
 
 To Do: Automation and Dockerizing Documentation
-----------------------------------------------------------------------
+-----------------------------------------------
 
 To compile all docstrings automatically into documentation source files, use the command:
     ::

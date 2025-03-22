@@ -5,5 +5,6 @@ healthy_meals_5
    :maxdepth: 4
 
    accounts
+   noxfile
    pages
    tests

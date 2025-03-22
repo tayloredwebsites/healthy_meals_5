@@ -7,9 +7,7 @@
 Healthy Meals documentation
 ===========================
 
-Add your content using ``Sphinx enhanced reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Add your content using `Sphinx enhanced reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_ syntax.
 
 Table of Contents
 -----------------
@@ -24,6 +22,7 @@ Table of Contents
    User Accounts Module</accounts>
    Misc. Pages Module</pages>
    Tests Module</tests>
+   Programmers Guide<prog_guide>
    Documentation Guide</docs_guide>
 
 ..
