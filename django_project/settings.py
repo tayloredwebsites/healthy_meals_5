@@ -19,6 +19,9 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
 
+# https://www.digitalocean.com/community/tutorials/how-to-secure-your-django-application-with-a-content-security-policy
+# to allow for github pages to be included into website
+CSP_IMG_SRC = ("'self'", 'https://tayloredwebsites.github.io')
 
 # Application definition
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

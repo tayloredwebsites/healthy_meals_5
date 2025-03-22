@@ -175,7 +175,7 @@ Please enter issues or pull requests (initially) for the following:
 - Base Starter branch issues, updates, or feature requests
 - Application feature requests
 
-If you are interested in contributing to the software development, please email [Dave Taylor of Taylored Web Sites](mailto:tayloredwebsites@me.com)
+If you are interested in contributing to the software development, please email [David Andrews Taylor of Taylored Web Sites](mailto:tayloredwebsites@me.com)
 
 ## License
 

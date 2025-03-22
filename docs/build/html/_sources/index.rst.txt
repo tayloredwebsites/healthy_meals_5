@@ -18,11 +18,17 @@ Table of Contents
    :maxdepth: 2
    :caption: Contents:
 
+   Quality Assurance</qa>
    Index<genindex>
    Module Index<modindex>
-   Search<search>
-   User Accounts</accounts>
-   Misc. Pages</pages>
-   Tests</tests>
+   User Accounts Module</accounts>
+   Misc. Pages Module</pages>
+   Tests Module</tests>
    Documentation Guide</docs_guide>
+
+..
+   Ignore the warning and do not include the modules.rst file in the TOC tree above.
+   /modules duplicates all entries in this TOC
+   If a new app is added to the project, add it to the above TOC Tree
+   adding the following line to the TOC doubles expansions in the TOC
    All Current Modules</modules>

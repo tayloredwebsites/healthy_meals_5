@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>accounts.models &mdash; Healthy Meals  documentation</title>
+  <title>accounts.models &mdash; Healthy Meals Diet Assistant  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=de96878a" />
@@ -30,7 +30,7 @@
           
           
           <a href="../../index.html" class="icon icon-home">
-            Healthy Meals
+            Healthy Meals Diet Assistant
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -42,14 +42,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../qa.html">Quality Assurance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../py-modindex.html">Module Index</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../search.html">Search</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../accounts.html">User Accounts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../pages.html">Misc. Pages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tests.html">Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../accounts.html">User Accounts Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages.html">Misc. Pages Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tests.html">Tests Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docs_guide.html">Documentation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">All Current Modules</a></li>
 </ul>
 
         </div>
@@ -58,7 +57,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Healthy Meals</a>
+          <a href="../../index.html">Healthy Meals Diet Assistant</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -86,19 +85,52 @@
 
 
 <span class="sd">&quot;&quot;&quot; Accounts model for storing users customized to allow login by email, etc.</span>
+<span class="sd">[Source: https://toxigon.com]</span>
+<span class="sd">Mix in SafeDeleteManager into CustomUserManager for Soft Deletes using safedelete</span>
+<span class="sd">- https://django-safedelete.readthedocs.io/en/latest/managers.html</span>
+<span class="sd">safe delete of custom users example found at;</span>
+<span class="sd">- https://codeberg.org/mvlaev/Cars/src/branch/main/cars/users_app/models.py&quot;</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1"># Mix in SafeDeleteManager into CustomUserManager for Soft Deletes using safedelete</span>
-<span class="c1"># - https://django-safedelete.readthedocs.io/en/latest/managers.html</span>
-<span class="c1"># safe delete of custom users example found at;</span>
-<span class="c1"># - https://codeberg.org/mvlaev/Cars/src/branch/main/cars/users_app/models.py</span>
 <div class="viewcode-block" id="CustomUserManager">
 <a class="viewcode-back" href="../../accounts.html#accounts.admin.CustomUserManager">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CustomUserManager</span><span class="p">(</span><span class="n">SafeDeleteManager</span><span class="p">,</span> <span class="n">UserManager</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom User model Manager class (&#39;objects&#39;).</span>
 
+<span class="sd">    Manager class for CustomUsers (Accounts).  Access to this class is through the &#39;objects&#39;</span>
+<span class="sd">    instance attribute of the CustomUser Class.</span>
+
+<span class="sd">    Soft Delete of Users are implemented through SafeDelete.</span>
+<span class="sd">    See: https://django-safedelete.readthedocs.io/en/latest/managers.html</span>
+
+<span class="sd">    Note:</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    param1 (class): SafeDelete manager class mixin</span>
+<span class="sd">    param2 (class): UserManager  for CustomUser Abstract Class</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    Raises:</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    Todo:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="CustomUserManager.all_deleted">
 <a class="viewcode-back" href="../../accounts.html#accounts.admin.CustomUserManager.all_deleted">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">all_deleted</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns all soft deleted customuser records.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">        param1 (Class): self.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        recordset: The soft deleted custom user records.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_with_deleted</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">deleted__isnull</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 </div>
 
@@ -189,7 +221,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, David Andrews Taylor @ Taylored Web Sites.</p>
+    <p>&#169; Copyright 2025, David A. Taylor @ Taylored Web Sites.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

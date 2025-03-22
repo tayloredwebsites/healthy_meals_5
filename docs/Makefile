@@ -14,7 +14,7 @@ APPSDIR = ..
 
 # Put it first so that "make" without argument is like "make html".
 html:
-	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS)
 
 # Outputs rst files from django application code
 # Note: all arguments to sphinx-apidoc are relative to --directory argument of make command (or directory run in)

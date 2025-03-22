@@ -1,6 +1,5 @@
 
 {% load static %}
-{% load compress %}
 {% load i18n %}
 
 {# variables for page: #}
@@ -15,21 +14,14 @@
     <meta name="keywords" content="nutrients, food nutrients, healthy foods, healthy meals, diet, diet assistant, healthy recipes, recipe assistant, open source nutrition" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <!-- keeping css/base.css because it is original stylesheet prior to not fully tested base.scss-->
-    <!-- link rel="stylesheet" href="{% static 'css/base.css' %}" /-->
-    {% compress css %}
-      <link type="text/x-scss" href="{% static 'scss/base.scss' %}" rel="stylesheet" media="screen" />
-      <!--  want bootstrap ??? -->
-      <!-- link type="text/x-scss" href="{% static 'bootstrap_scss/bootstrap.scss' %}" rel="stylesheet" media="screen" -->
-    {% endcompress %}
-
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"  media="screen" />
     <script src="{% static 'js/base.js' %}"></script>
     <script>
         window.onload = pageOnLoad;
     </script>
   </head>
   <body>
-    <main>
+    <main class="vert-full">
       <header class="flexAround">
         <section id="logo" class="flexCol">
           <a href="./index.html" title="Healthy Meals Diet Assistant Home Page">
@@ -71,6 +63,7 @@
         <ul class="flexRow">
           <li><span><a href="{% url 'home' %}">{% trans "Home" %}</a></span></li>
           <li><span><a href="{% url 'about' %}">{% trans "About" %}</a></span></li>
+          <li><span><a href="{% url 'docs' %}">{% trans "Tech Docs" %}</a></span></li>
         </ul>
       </nav>
       <div id="errorMessage">

@@ -23,9 +23,9 @@ sys.path.insert(0, os.path.abspath("../.."))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
 django.setup()
 
-project = 'Healthy Meals'
-copyright = '2025, David Andrews Taylor @ Taylored Web Sites'
-author = 'David Andrews Taylor @ Taylored Web Sites'
+project = 'Healthy Meals Diet Assistant'
+copyright = '2025, David A. Taylor @ Taylored Web Sites'
+author = 'David A. Taylor @ Taylored Web Sites'
 
 # ----------------------------------------------------------------------------
 ''' Sphinx General configuration'''
