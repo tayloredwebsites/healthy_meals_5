@@ -20,6 +20,7 @@ import sys
 import django
 
 sys.path.insert(0, os.path.abspath("../.."))
+sys.path.insert(0, os.path.abspath("../../.."))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_project.settings")
 django.setup()
 
@@ -60,14 +61,7 @@ html_css_files = ['css/custom.css'] # custom css for full width pages
 
 '''Other settings'''
 templates_path = ['_templates']
-exclude_patterns = [
-    "**/migrations",
-    "django_project",
-    "docs",
-    "manage",
-    "noxfile",
-    "tests",
-]
+exclude_patterns = ["**/healthy_meals_5"]
 autosummary_generate = True
 # Include the database table names of Django models
 django_show_db_tables = True                # Boolean, default: False

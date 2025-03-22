@@ -29,7 +29,7 @@ def test_base_not_logged_in():
     ### Check the Header Nav bar
     # confirm the navigation bar has two items - (home and about)
     nav_tags = soup.find(id='topMenu').find_all('a')
-    assert len(nav_tags) == 2
+    assert len(nav_tags) == 3 # 3 top navigation items
     nav_home_link_tag = soup.find(id='topMenu').find_all('a', href='/')
     assert len(nav_home_link_tag) == 1
     nav_about_link_tag = soup.find(id='topMenu').find_all('a', href='/about/')
