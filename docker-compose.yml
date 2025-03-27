@@ -8,6 +8,9 @@ services:
     build: .
     image: hm_web_image
     container_name: hm_web_image
+    # To Do: get auto code updating to docker working
+    # volumes:
+    #   - .:/code
     ports:
       - 8000:8000
     depends_on:
@@ -31,7 +34,7 @@ services:
     command: sh -c "python manage.py makemigrations &&
         python manage.py migrate &&
         sass static/scss:static/css &&
-        python manage.py collectstatic --noinput &&
+        python3 manage.py collectstatic --noinput &&
         python3 manage.py runserver 0.0.0.0:8000"
 
 

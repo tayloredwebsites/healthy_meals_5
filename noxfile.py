@@ -21,14 +21,14 @@ class NoxfileDocs:
 
     .. code-block:: python
 
-        # Bring up Healthy Meals in local server.
+        # Bring up Healthy Meals locally (in local server).
         nox -s localup
 
-        # Build documentation locally to Sphinx.
+        # Build documentation to Sphinx locally.
         # Note: ignore modules.rst warnings (they are manually in index.rst).
         nox -s makeDocs
 
-        # Rebuild all documentation to Sphinx (cleans up old docs).
+        # Rebuild all documentation to Sphinx (cleans up old docs) locally.
         # Note: ignore modules.rst warnings (they are manually in index.rst).
         nox -s remakeDocs
 
@@ -40,14 +40,20 @@ class NoxfileDocs:
 
     .. code-block:: python
 
-        # Bring up Healthy Meals in docker.
-        nox -s dockerUp
+        # Bring up Healthy Meals in docker in background.
+        nox -s dockerUpBg
+
+        # Bring up Healthy Meals in docker, with log to console.
+        nox -s dockerUpLog
 
         # Only bring up Healthy Meals in docker if not up already.
         nox -s dockerEnsureUp
 
         # Bring down Healthy Meals in docker.
         nox -s dockerDown
+
+        # 'Clear out entire docker system.
+        nox -s dockerClear
 
         # Generate the documentation using Sphinx through docker.
         nox -s dockerMakeDocs
@@ -59,7 +65,7 @@ class NoxfileDocs:
         nox -s dockerLogs
 
         # Run automated tests (with test coverage) in docker.
-        nox -s dockerTests
+        nox -s dockerTesting
 
     '''
 
@@ -148,10 +154,14 @@ class NoxfileDocs:
     # Docker tasks
 
     @nox.session
-    def dockerUp(session):
-        '''Bring up Healthy Meals in docker.'''
+    def dockerUpBg(session):
+        '''Bring up Healthy Meals in docker in background.'''
         session.run("docker", "compose", "up", "--build", "--detach")
 
+    @nox.session
+    def dockerUpLog(session):
+        '''Bring up Healthy Meals in docker, with log to console.'''
+        session.run("docker", "compose", "up", "--build")
 
     @nox.session
     def dockerEnsureUp(session):
@@ -159,10 +169,26 @@ class NoxfileDocs:
         session.run("docker", "compose", "up", "--build", "--detach", "--no-recreate")
 
     @nox.session
+    def dockerExecSh(session):
+        '''Open shell in web container.'''
+        session.run("docker", "exec", "-it", "hm_web_image", "sh")
+
+    @nox.session
+    def dockerExecPsql(session):
+        '''Open psql in db container.'''
+        session.run("docker", "exec", "-it", "healthy_meals_5-pg_db-1", "psql", "--dbname=healthy_meals", "--username=healthy_meals")
+
+    @nox.session
     def dockerDown(session):
         '''Bring down Healthy Meals in docker.'''
         session.run("docker", "stop", "hm_web_image")
         session.run("docker", "stop", "healthy_meals_5-pg_db-1")
+
+    @nox.session
+    def dockerClear(session):
+        '''Clear out entire docker system.'''
+        session.run("docker", "ps", "-aq", "|", "xargs", "docker", "stop", "|", "xargs", "docker", "rm")
+        session.run("docker", "system", "prune", "--all", "--force")
 
 
     @nox.session
@@ -184,7 +210,7 @@ class NoxfileDocs:
 
 
     @nox.session
-    def dockerTests(session):
+    def dockerTesting(session):
         """Run automated tests (localtest) through docker."""
         session.run("docker", "exec", "-it", "hm_web_image", "nox", "-s", "testing")
 

@@ -9,13 +9,13 @@
 [Documentation]("https://tayloredwebsites.github.io/healthy_meals_5/index.html")
 
 ## 🚀 Base Project Features
-- Runs in Docker or locally
-- Nox tool to run tests and test coverage
-- Circle CI integration to ensure all tests pass for pull requests
+- Can run this project in in Docker or locally (using a local web server).
+- Uses the nox tool for automating  and simplifying tasks.
+- Uses Circle CI github integration to ensure all tests pass for pull requests.
 - Django 5.1 & Python 3.12
 - Sign in by email and password (see: [Lithium README](./LITHIUM_README.md))
 - Github pages site for Documentation, Test Results, & Coverage
-- Test and coverage badges in README.md
+- Test and coverage badges displayed in documentation and in README.md
 - Internationalization (i18n) of strings in code
 - Soft Delete functionality of database records
 - Base HTML Template
