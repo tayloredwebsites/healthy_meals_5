@@ -46,4 +46,4 @@ RUN rm -rf dart-sass-${SASS_VERSION}-linux-x64.tar.gz
 ENV PATH=$PATH:./dart-sass
 
 # Copy local server code
-COPY . /code/
+COPY . /code

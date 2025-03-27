@@ -3,7 +3,7 @@ platform darwin -- Python 3.12.6, pytest-8.3.4, pluggy-1.5.0
 django: version: 5.1.2, settings: django_project.settings (from ini)
 rootdir: /Users/dave/works/python/healthy_meals_5
 configfile: pyproject.toml
-plugins: html-4.1.1, metadata-3.1.1, django-4.9.0, Faker-36.2.2, factoryboy-2.7.0
+plugins: html-4.1.1, Faker-37.1.0, metadata-3.1.1, django-4.9.0, factoryboy-2.7.0
 collected 7 items
 
 tests/accounts/test_database.py .                                        [ 14%]
@@ -13,7 +13,7 @@ tests/pages/test_base_template_cases.py ..                               [100%]
 
 - generated xml file: /Users/dave/works/python/healthy_meals_5/docs/qa/tests/junit.xml -
 - Generated html report: file:///Users/dave/works/python/healthy_meals_5/docs/qa/tests/index.html -
-============================== 7 passed in 2.59s ===============================
+============================== 7 passed in 1.82s ===============================
 SUCCESS - Tests badge created: '/Users/dave/works/python/healthy_meals_5/docs/qa/tests/tests_badge.svg'
 Wrote XML report to ./docs/qa/coverage/coverage.xml
 Wrote HTML report to ./docs/qa/coverage/html/index.html

@@ -5,19 +5,57 @@ from safedelete.managers import SafeDeleteManager
 from auditlog.registry import auditlog
 from auditlog.models import AuditlogHistoryField
 
-# Mix in SafeDeleteManager into CustomUserManager for Soft Deletes using safedelete
-# - https://django-safedelete.readthedocs.io/en/latest/managers.html
-# safe delete of custom users example found at;
-# - https://codeberg.org/mvlaev/Cars/src/branch/main/cars/users_app/models.py
-class CustomUserManager(SafeDeleteManager, UserManager):
 
+""" Accounts model for storing users customized to allow login by email, etc.
+[Source: https://toxigon.com]
+Mix in SafeDeleteManager into CustomUserManager for Soft Deletes using safedelete
+- https://django-safedelete.readthedocs.io/en/latest/managers.html
+safe delete of custom users example found at;
+- https://codeberg.org/mvlaev/Cars/src/branch/main/cars/users_app/models.py"
+"""
+
+class CustomUserManager(SafeDeleteManager, UserManager):
+    """Custom User model Manager class ('objects').
+
+    Manager class for CustomUsers (Accounts).  Access to this class is through the 'objects'
+    instance attribute of the CustomUser Class.
+
+    Soft Delete of Users are implemented through SafeDelete.
+    See: https://django-safedelete.readthedocs.io/en/latest/managers.html
+
+    Args:
+    param1 (class): SafeDelete manager class mixin
+    param2 (class): UserManager  for CustomUser Abstract Class
+
+    Attributes:
+    param1 (class): SafeDelete manager class mixin
+    param2 (class): UserManager  for CustomUser Abstract Class
+
+    """
     def all_deleted(self):
+        """Returns all soft deleted customuser records.
+
+        No arguments are passed to this function when calling it
+
+        Returns:
+        recordset: The soft deleted custom user records.
+
+        Example:
+
+        .. code-block:: python
+
+            for rec in Account.all_deleted():
+                print(rec)
+
+        """
         return self.all_with_deleted().filter(deleted__isnull=False)
 
 # Mix in SafeDeleteModel into CustomUser Model for Soft Deletes using safedelete
 # - https://django-safedelete.readthedocs.io/en/latest/managers.html
 
 class CustomUser(SafeDeleteModel, AbstractUser):
+    '''CustomUser model - Abstract User customized to allow login by email
+    '''
 
     history = AuditlogHistoryField()
 
