@@ -17,8 +17,13 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "tayloredwebsites.github.io"]
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# https://www.digitalocean.com/community/tutorials/how-to-secure-your-django-application-with-a-content-security-policy
+# to allow for github pages to be included into website
+CSP_FRAME_SRC = ("'self'", 'https://tayloredwebsites.github.io')
 
 # Application definition
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -56,7 +61,7 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",  # django-allauth
     # all Request altering middleware need to be registered above/before auditlog middleware, e.g., Django's default middleware classes
     "auditlog.middleware.AuditlogMiddleware", # https://django-auditlog.readthedocs.io/en/latest/installation.html
@@ -170,9 +175,8 @@ STATICFILES_FINDERS = [
     'compressor.finders.CompressorFinder',
 ]
 
-# https://www.accordbox.com/blog/how-use-scss-sass-your-django-project-python-way/
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
+    # deprecated libsass removed from here - using installed dart-sass
 )
 
 # https://whitenoise.readthedocs.io/en/latest/django.html

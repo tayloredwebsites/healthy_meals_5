@@ -1,18 +1,21 @@
 # healthy_meals: Meet your Dietary Goals with Healthier Meals
 
-[//]: # (https://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/BZR3uzdbU6P9JdMbhCLMmZ/PhQcorR5decQrvhgn17chH/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/BZR3uzdbU6P9JdMbhCLMmZ/PhQcorR5decQrvhgn17chH/tree/main)
+[![Coverage Status](https://tayloredwebsites.github.io/healthy_meals_5/qa/coverage/coverage_badge.svg)](https://tayloredwebsites.github.io/√/qa/coverage/html/index.html)
+[![Test Status](https://tayloredwebsites.github.io/healthy_meals_5/qa/tests/tests_badge.svg)](https://tayloredwebsites.github.io/healthy_meals_5/qa/tests/index.html)
+[![](https://tayloredwebsites.github.io/healthy_meals_5/qa/flake8/flake8_badge.svg)](https://tayloredwebsites.github.io/healthy_meals_5/qa/flake8/html/index.html)
+[![](https://tayloredwebsites.github.io/healthy_meals_5/mypy_badge.svg)](https://tayloredwebsites.github.io/healthy_meals_5/qa/mypy/index.html)
 
-[![Tests Status](./tests-badge.svg)](https://htmlpreview.github.io/?https://github.com/tayloredwebsites/healthy_meals/blob/main/reports/junit/index.html)
-[![Coverage Status](./coverage-badge.svg)](https://htmlpreview.github.io/?https://github.com/tayloredwebsites/healthy_meals/blob/main/reports/coverage_html/index.html)
+[Documentation]("https://tayloredwebsites.github.io/healthy_meals_5/index.html")
 
 ## 🚀 Base Project Features
-- Runs in Docker or locally
-- Nox tool to run tests and test coverage
-- Circle CI integration to ensure all tests pass for pull requests
+- Can run this project in in Docker or locally (using a local web server).
+- Uses the nox tool for automating  and simplifying tasks.
+- Uses Circle CI github integration to ensure all tests pass for pull requests.
 - Django 5.1 & Python 3.12
 - Sign in by email and password (see: [Lithium README](./LITHIUM_README.md))
 - Github pages site for Documentation, Test Results, & Coverage
-- Test and coverage badges in README.md
+- Test and coverage badges displayed in documentation and in README.md
 - Internationalization (i18n) of strings in code
 - Soft Delete functionality of database records
 - Base HTML Template
@@ -33,10 +36,9 @@
 
 ## Table of Contents
 * [Installation](#installation)
-* [Development Environment](#development-environment)
+* [Development Environment Guide](#development-environment-guide)
 * [Next Steps](#next-steps)
 * [Contributing](#contributing)
-* [Support](#support)
 * [License](#license)
 
 ## Installation
@@ -100,7 +102,33 @@ Note: If you are having problems with installing postgres onto your computer, co
 
 ### 6) install docker desktop
 
-Note: You may skip this step if you are only developing locally.
+Note: You may skip this step if you are only developing locally, or have the Docker Daemon installed already.
+
+### 7) install dart sass
+
+Note: the libsass used by many python programs has been deprecated and dart-sass is now recommended
+
+See: [https://sass-lang.com/blog/libsass-is-deprecated/](https://sass-lang.com/blog/libsass-is-deprecated/)
+
+see: [https://github.com/sass/dart-sass](https://github.com/sass/dart-sass)
+
+See: [https://sass-lang.com/install/](https://sass-lang.com/install/)
+
+#### Mac
+
+    % brew install sass/sass/sass
+    % sass --version
+
+#### Linux (using Snap)
+
+See: [https://snapcraft.io/dart-sass](https://snapcraft.io/dart-sass)
+
+    $ sudo snap install dart-sass
+    % sass --version
+
+#### docker
+
+Note: Dockerfile now downloads dart-sass and adds it to the path
 
 ## Development Environment Guide
 
@@ -147,8 +175,11 @@ Please enter issues or pull requests (initially) for the following:
 - Base Starter branch issues, updates, or feature requests
 - Application feature requests
 
-If you are interested in contributing to the software development, please email [Dave Taylor of Taylored Web Sites](mailto:tayloredwebsites@me.com)
+If you are interested in contributing to the software development, please email [David Andrews Taylor of Taylored Web Sites](mailto:tayloredwebsites@me.com)
+
 ## License
 
 Copyright (C) 2025 David A. Taylor of Taylored Web Sites (tayloredwebsites.com)
 Licensed under [AGPL-3.0-only](https://opensource.org/license/agpl-v3/), and let me know how you wish to help.
+
+[Why AGPL V3?](https://www.fsf.org/bulletin/2021/fall/the-fundamentals-of-the-agplv3)
