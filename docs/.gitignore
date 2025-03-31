@@ -1,11 +1,20 @@
-.gitignore
-'''gitignore handling of the docs branch.
+# .gitignore
+''' QA BRANCH version of .gitignore
 
-The qa branch will be pushed separately to a github page for proper viewing documentation and qa reports
+Main branch pushes should not update the /docs folder, thus:
+- there will be a .gitignore in the docs folder that will:
+  - have a * (all file wildcard) in it, so no /docs files go in the git repo.
+  - except we need to have this .gitignore in the git repo to tell git to follow these instructions.
+    - to do this, we have the next line read: !.gitignore
+    - the ! in front  of .gitignore tells git to not ignore .gitignore
+    - by which we put .gitignore into the repo
+    - thus we ensure that the other files are not put into the repo.
 
-This will be achieved by having the docs/.gitignore different in the main branch compared with the qa branch.
-- the main branch docs/.gitignore will have a wildcard * to not upload any docs files to the main branch.
-- the qa branch docs/.gitignore will have the not wildcard !* to upload all docs files to the qa branch.
+Only the QA branch should update the /docs folder
+- there will be no ignored files in its version of .gitignore
+- the docs folder is deployed to a github page.
 '''
-*
-!.gitignore
+
+# *
+# !.gitignore
+build/doctrees
